@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nekonyaa</title>
+    <link>https://312k.github.io/nekonyaa.github.io/</link>
+    <description>Recent content on nekonyaa</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <copyright>nekonyaa</copyright>
+    <lastBuildDate>Wed, 30 Dec 2020 21:41:10 +0900</lastBuildDate><atom:link href="https://312k.github.io/nekonyaa.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>このさいとについて</title>
+      <link>https://312k.github.io/nekonyaa.github.io/post/about/</link>
+      <pubDate>Wed, 30 Dec 2020 21:41:10 +0900</pubDate>
+      
+      <guid>https://312k.github.io/nekonyaa.github.io/post/about/</guid>
+      <description>こんにちは </description>
+    </item>
+    
+  </channel>
+</rss>
