@@ -5,6 +5,7 @@ paginate = 5
 defaultContentLanguage = "ja"
 publishDir = "docs"
 canonifyurls = true 
+enableRobotsTXT = true
 [params]
   # dir name of your main content (default is `content/posts`).
   # the list of set content will show up on your index page (baseurl).
@@ -14,7 +15,7 @@ canonifyurls = true
   themeColor = "orange"
 
   # if you set this to 0, only submenu trigger will be visible
-  showMenuItems = 3
+  showMenuItems = 4
 
   # show selector to switch language
   showLanguageSelector = false
@@ -76,3 +77,7 @@ canonifyurls = true
       	identifier = "大会の結果"
       	name = "大会の結果"
       	url = "/result"
+      [[languages.ja.menu.main]]
+      	identifier="RSS"
+      	name ="購読する"
+      	url= "post/index.xml"
