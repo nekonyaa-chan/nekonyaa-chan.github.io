@@ -14,7 +14,7 @@ canonifyurls = true
   themeColor = "orange"
 
   # if you set this to 0, only submenu trigger will be visible
-  showMenuItems = 2
+  showMenuItems = 3
 
   # show selector to switch language
   showLanguageSelector = false
@@ -51,8 +51,8 @@ canonifyurls = true
     title = "nekonyaa"
     subtitle = "CTFのwrite upなど"
     owner = "nekonyaa"
-    keywords = ""
-    copyright = "nekonyaa"
+    keywords = "CTF write up"
+    copyright = "© 2020 Powered by Hugo  ::  © nekonyaa"
     menuMore = "続きを読む"
     readMore = "続きを読む"
     readOtherPosts = "ほかの投稿も読む"
@@ -69,6 +69,10 @@ canonifyurls = true
         name = "このサイトについて"
         url = "/about"
       [[languages.ja.menu.main]]
-        identifier = "nekonyaaのctftime"
-        name = "nekonyaaのctftime"
+        identifier = "CTFTIME"
+        name = "CTFTIME"
         url = "https://ctftime.org/team/141534"
+      [[languages.ja.menu.main]]
+      	identifier = "大会の結果"
+      	name = "大会の結果"
+      	url = "/result"
