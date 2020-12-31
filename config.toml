@@ -68,7 +68,7 @@ canonifyurls = true
         identifier = "about"
         name = "このサイトについて"
         url = "/about"
-     # [[languages.en.menu.main]]
-      #  identifier = "showcase"
-       # name = "Showcase"
-        #url = "/showcase"
+      [[languages.ja.menu.main]]
+        identifier = "nekonyaaのctftime"
+        name = "nekonyaaのctftime"
+        url = "https://ctftime.org/team/141534"
