@@ -11,6 +11,6 @@ author = "nekonyaa"
 
 # メンバー紹介
 ## 312k
-
+[Twitter](https://twitter.com/312k3)しています。
 # 今までにチームで出た大会
 1.[Brixel CTF winter edition](https://ctf.brixel.space/) (2020/12/26 21:00 - 2021/01/04 04:00)
