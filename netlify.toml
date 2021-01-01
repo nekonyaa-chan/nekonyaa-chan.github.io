@@ -1,6 +1,6 @@
 [build]
 publish = "public"
-command = "hugo --theme=terminal --gc --minify"
+command = "hugo --theme=theme-terminal --gc --minify"
 
 [context.production.environment]
 HUGO_VERSION = "0.80.0"
