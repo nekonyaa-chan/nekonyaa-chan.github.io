@@ -1,6 +1,6 @@
 baseurl = "https://312k.github.io/nekonyaa.github.io/"
 languageCode = "ja-jp"
-theme = "theme-terminal"
+theme = "hugo-theme-terminal"
 paginate = 5
 defaultContentLanguage = "ja"
 #publishDir = "docs"
