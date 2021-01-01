@@ -1,9 +1,9 @@
-baseurl = "https://312k.github.io/nekonyaa.github.io/"
+baseurl = "https://infallible-mcnulty-2679ed.netlify.app/"
 languageCode = "ja-jp"
-theme = "theme-terminal"
+theme = "hugo-theme-terminal"
 paginate = 5
 defaultContentLanguage = "ja"
-publishDir = "docs"
+#publishDir = "docs"
 canonifyurls = true 
 enableRobotsTXT = true
 [params]
