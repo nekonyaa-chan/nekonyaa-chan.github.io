@@ -3,7 +3,7 @@ languageCode = "ja-jp"
 theme = "theme-terminal"
 paginate = 5
 defaultContentLanguage = "ja"
-publishDir = "docs"
+#publishDir = "docs"
 canonifyurls = true 
 enableRobotsTXT = true
 [params]
