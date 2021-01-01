@@ -1,4 +1,4 @@
-baseurl = "https://312k.github.io/nekonyaa.github.io/"
+baseurl = "https://infallible-mcnulty-2679ed.netlify.app/"
 languageCode = "ja-jp"
 theme = "hugo-theme-terminal"
 paginate = 5

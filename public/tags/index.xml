@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on nekonyaa</title>
-    <link>https://312k.github.io/nekonyaa.github.io/tags/</link>
+    <link>https://infallible-mcnulty-2679ed.netlify.app/tags/</link>
     <description>Recent content in Tags on nekonyaa</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <copyright>© 2020 Powered by Hugo  ::  © nekonyaa</copyright><atom:link href="https://312k.github.io/nekonyaa.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© 2020 Powered by Hugo  ::  © nekonyaa</copyright><atom:link href="https://infallible-mcnulty-2679ed.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
