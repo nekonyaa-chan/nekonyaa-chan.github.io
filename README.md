@@ -1,5 +1,6 @@
 # nekonyaa
-チーム[nekonyaa](https://312k.github.io/nekonyaa.github.io/)のブログのリポジトリです。
+チーム[nekonyaa](https://nekonyaa.netlify.app/)のブログのリポジトリです。
+
 
 # ライセンス
 このサイトの静的サイトジェネレーター"Hugo"はApache License, Version 2.0 のライセンスで配布されている成果物を含んでいます。
