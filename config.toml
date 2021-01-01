@@ -62,7 +62,7 @@ enableRobotsTXT = true
 
     [languages.ja.params.logo]
       logoText = "nekonyaa"
-      logoHomeLink = "https://312k.github.io/nekonyaa.github.io/"
+      logoHomeLink = "https://nekonyaa.netlify.app/"
 
     [languages.ja.menu]
       [[languages.ja.menu.main]]
