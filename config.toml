@@ -3,7 +3,6 @@ languageCode = "ja-jp"
 theme = "hugo-theme-terminal"
 paginate = 5
 defaultContentLanguage = "ja"
-#publishDir = "docs"
 canonifyurls = true 
 enableRobotsTXT = true
 [params]
