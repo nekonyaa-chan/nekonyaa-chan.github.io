@@ -1,5 +1,5 @@
 # nekonyaa
-チーム[nekonyaa](https://nekonyaa.netlify.app/)のブログのリポジトリです。
+チーム[nekonyaa](https://312k.github.io/nekonyaa.github.io/)のブログのリポジトリです。
 
 
 # ライセンス
