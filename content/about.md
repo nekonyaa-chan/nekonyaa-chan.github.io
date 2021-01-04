@@ -12,6 +12,7 @@ author = "nekonyaa"
 # メンバー
 * 312k
 * tt6mzn
+* sR
 
 # 今までにチームで出た大会
 1.[Brixel CTF winter edition](https://ctf.brixel.space/) (2020/12/26 21:00 - 2021/01/04 04:00)
