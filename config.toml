@@ -1,9 +1,9 @@
 baseurl = "https://312k.github.io/nekonyaa.github.io/"
 languageCode = "ja-jp"
-theme = "hugo-theme-terminal"
+theme = "terminal"
 paginate = 5
 defaultContentLanguage = "ja"
-canonifyurls = true 
+canonifyurls = true
 enableRobotsTXT = true
 [params]
   # dir name of your main content (default is `content/posts`).
