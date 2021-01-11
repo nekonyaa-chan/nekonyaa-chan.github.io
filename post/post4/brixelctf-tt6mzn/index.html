@@ -1,0 +1,149 @@
+<!doctype html><html lang=ja><head><title>BrixelCTF-tt6mzn write up :: nekonyaa</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="はじめに 年末から年始にかけてBrixelCTFに参加しました。 結果はこんな感じ。 Internet・Programming・Cryptographyを中心に11問を解くことができました。 チームとしてはスコアが212ポイント、順位が830人中317位でした。
+Programming Are you fast enough? urlを開くと次のような画面が表示されます。「毎回変わるランダムな文字列を入力ボックスに入力してenterボタンを押す」までを1秒以内にやれ、とあります。 もちろん普通に要請にこたえることはできないので、プログラムを書きます。 seleniumというフレームワークを使えばこれを実現できます。 seleniumはブラウザをプログラムで操作するツールです。 私はchromeとpythonを使って実装しました。 seleniumのインストールのほかにChromeDriverをインストールする必要があったのでちょっとめんどくさい。 書いたコードは以下です。
+from selenium import webdriver from selenium.webdriver.common.keys import Keys import time def main(): driver = webdriver.Chrome(executable_path=&amp;#39;./driver/chromedriver.exe&amp;#39;) driver.get(&amp;#39;http://timesink.be/speedy&amp;#39;) # urlを開く ans = driver.find_element_by_id(&amp;#34;rndstring&amp;#34;) # ランダム文字列を取得 inputbox = driver.find_element_by_name(&amp;#34;inputfield&amp;#34;) # 入力ボックスを取得 inputbtn = driver.find_element_by_id(&amp;#34;submitbutton&amp;#34;) # ボタンを取得 inputbox.send_keys(ans.text) # 入力欄に文字列を入れる inputbtn.click() # ボタンをクリック time.sleep(60) # 待機 main() find_element_by_～()という関数で文字列やボタンを取得し、その文字列を取り出したり、ボタンをクリックしたりすることができます。 実行が終わるとウィンドウが自動で閉じてしまうので、すべての処理が終わったら60秒待機するようにしています。 実行するとフラグが表示されました。
+Keep walking&amp;hellip; 変数X, Y, answerをそれぞれ初期値1に設定し、
+ answerの値を X * Y + answer + 3 に更新 Xをインクリメント Yをインクリメント  という処理をXが525になるまで繰り返した時のanswerの値を求めなさい。という問題です。 手動でも解けないことはなさそうですがプログラムを書きます。"><meta name=keywords content="CTF write up"><meta name=robots content="noodp"><link rel=canonical href=https://312k.github.io/nekonyaa.github.io/post/post4/brixelctf-tt6mzn/><link rel=stylesheet href=https://312k.github.io/nekonyaa.github.io/assets/style.css><link rel=apple-touch-icon href=https://312k.github.io/nekonyaa.github.io/img/apple-touch-icon-192x192.png><link rel="shortcut icon" href=https://312k.github.io/nekonyaa.github.io/img/favicon/orange.png><meta name=twitter:card content="summary"><meta name=twitter:site content><meta name=twitter:creator content="tt6mzn"><meta property="og:locale" content="ja"><meta property="og:type" content="article"><meta property="og:title" content="BrixelCTF-tt6mzn write up"><meta property="og:description" content="はじめに 年末から年始にかけてBrixelCTFに参加しました。 結果はこんな感じ。 Internet・Programming・Cryptographyを中心に11問を解くことができました。 チームとしてはスコアが212ポイント、順位が830人中317位でした。
+Programming Are you fast enough? urlを開くと次のような画面が表示されます。「毎回変わるランダムな文字列を入力ボックスに入力してenterボタンを押す」までを1秒以内にやれ、とあります。 もちろん普通に要請にこたえることはできないので、プログラムを書きます。 seleniumというフレームワークを使えばこれを実現できます。 seleniumはブラウザをプログラムで操作するツールです。 私はchromeとpythonを使って実装しました。 seleniumのインストールのほかにChromeDriverをインストールする必要があったのでちょっとめんどくさい。 書いたコードは以下です。
+from selenium import webdriver from selenium.webdriver.common.keys import Keys import time def main(): driver = webdriver.Chrome(executable_path=&amp;#39;./driver/chromedriver.exe&amp;#39;) driver.get(&amp;#39;http://timesink.be/speedy&amp;#39;) # urlを開く ans = driver.find_element_by_id(&amp;#34;rndstring&amp;#34;) # ランダム文字列を取得 inputbox = driver.find_element_by_name(&amp;#34;inputfield&amp;#34;) # 入力ボックスを取得 inputbtn = driver.find_element_by_id(&amp;#34;submitbutton&amp;#34;) # ボタンを取得 inputbox.send_keys(ans.text) # 入力欄に文字列を入れる inputbtn.click() # ボタンをクリック time.sleep(60) # 待機 main() find_element_by_～()という関数で文字列やボタンを取得し、その文字列を取り出したり、ボタンをクリックしたりすることができます。 実行が終わるとウィンドウが自動で閉じてしまうので、すべての処理が終わったら60秒待機するようにしています。 実行するとフラグが表示されました。
+Keep walking&amp;hellip; 変数X, Y, answerをそれぞれ初期値1に設定し、
+ answerの値を X * Y + answer + 3 に更新 Xをインクリメント Yをインクリメント  という処理をXが525になるまで繰り返した時のanswerの値を求めなさい。という問題です。 手動でも解けないことはなさそうですがプログラムを書きます。"><meta property="og:url" content="https://312k.github.io/nekonyaa.github.io/post/post4/brixelctf-tt6mzn/"><meta property="og:site_name" content="nekonyaa"><meta property="og:image" content="https://312k.github.io/nekonyaa.github.io/img/favicon/orange.png"><meta property="og:image:width" content="2048"><meta property="og:image:height" content="1024"><meta property="article:section" content="Writeup"><meta property="article:published_time" content="2021-01-06 16:54:19 +0900 +0900"></head><body class=orange><div class="container headings--one-size"><header class=header><div class=header__inner><div class=header__logo><a href=https://312k.github.io/nekonyaa.github.io/><div class=logo>nekonyaa</div></a></div><div class=menu-trigger>menu</div></div><nav class=menu><ul class="menu__inner menu__inner--desktop"><li><a href=https://ctftime.org/team/141534>CTFTIME</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/about>このサイトについて</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/result>大会の結果</a></li><li><a href=post/index.xml>購読する</a></li></ul><ul class="menu__inner menu__inner--mobile"><li><a href=https://ctftime.org/team/141534>CTFTIME</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/about>このサイトについて</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/result>大会の結果</a></li><li><a href=post/index.xml>購読する</a></li></ul></nav></header><div class=content><div class=post><h1 class=post-title><a href=https://312k.github.io/nekonyaa.github.io/post/post4/brixelctf-tt6mzn/>BrixelCTF-tt6mzn write up</a></h1><div class=post-meta><span class=post-date>2021-01-06 [Updated: 2021-01-06]</span>
+<span class=post-author>:: tt6mzn</span></div><span class=post-tags>#<a href=https://312k.github.io/nekonyaa.github.io/tags/ctf/>CTF</a>&nbsp;
+#<a href=https://312k.github.io/nekonyaa.github.io/tags/writeup/>Writeup</a>&nbsp;
+#<a href=https://312k.github.io/nekonyaa.github.io/tags/tt6mzn/>tt6mzn</a>&nbsp;</span><div class=post-content><div><h1 id=はじめに>はじめに<a href=#はじめに class=hanchor arialabel=Anchor>&#8983;</a></h1><p>年末から年始にかけてBrixelCTFに参加しました。
+結果は<a href=https://ctf.brixel.space/users/109>こんな感じ</a>。
+Internet・Programming・Cryptographyを中心に11問を解くことができました。
+チームとしてはスコアが212ポイント、順位が830人中317位でした。</p><h1 id=programming>Programming<a href=#programming class=hanchor arialabel=Anchor>&#8983;</a></h1><h2 id=are-you-fast-enough>Are you fast enough?<a href=#are-you-fast-enough class=hanchor arialabel=Anchor>&#8983;</a></h2><p>urlを開くと次のような画面が表示されます。<img src=../2021-01-06areyoufastenough.png alt="Are you fast enough?">
+「毎回変わるランダムな文字列を入力ボックスに入力してenterボタンを押す」までを1秒以内にやれ、とあります。
+もちろん普通に要請にこたえることはできないので、プログラムを書きます。
+<a href=https://www.selenium.dev/documentation/ja/>selenium</a>というフレームワークを使えばこれを実現できます。
+seleniumはブラウザをプログラムで操作するツールです。
+私はchromeとpythonを使って実装しました。
+seleniumのインストールのほかに<a href=http://chromedriver.chromium.org/downloads>ChromeDriver</a>をインストールする必要があったのでちょっとめんどくさい。
+書いたコードは以下です。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>from</span> selenium <span style=color:#f92672>import</span> webdriver
+<span style=color:#f92672>from</span> selenium.webdriver.common.keys <span style=color:#f92672>import</span> Keys
+<span style=color:#f92672>import</span> time
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+    driver <span style=color:#f92672>=</span> webdriver<span style=color:#f92672>.</span>Chrome(executable_path<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;./driver/chromedriver.exe&#39;</span>)
+    driver<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#39;http://timesink.be/speedy&#39;</span>) <span style=color:#75715e># urlを開く</span>
+
+    ans <span style=color:#f92672>=</span> driver<span style=color:#f92672>.</span>find_element_by_id(<span style=color:#e6db74>&#34;rndstring&#34;</span>) <span style=color:#75715e># ランダム文字列を取得</span>
+    inputbox <span style=color:#f92672>=</span> driver<span style=color:#f92672>.</span>find_element_by_name(<span style=color:#e6db74>&#34;inputfield&#34;</span>) <span style=color:#75715e># 入力ボックスを取得</span>
+    inputbtn <span style=color:#f92672>=</span> driver<span style=color:#f92672>.</span>find_element_by_id(<span style=color:#e6db74>&#34;submitbutton&#34;</span>) <span style=color:#75715e># ボタンを取得</span>
+    inputbox<span style=color:#f92672>.</span>send_keys(ans<span style=color:#f92672>.</span>text) <span style=color:#75715e># 入力欄に文字列を入れる</span>
+    inputbtn<span style=color:#f92672>.</span>click() <span style=color:#75715e># ボタンをクリック</span>
+    time<span style=color:#f92672>.</span>sleep(<span style=color:#ae81ff>60</span>) <span style=color:#75715e># 待機</span>
+
+main()
+</code></pre></div><p>find_element_by_～()という関数で文字列やボタンを取得し、その文字列を取り出したり、ボタンをクリックしたりすることができます。
+実行が終わるとウィンドウが自動で閉じてしまうので、すべての処理が終わったら60秒待機するようにしています。
+実行するとフラグが表示されました。</p><h2 id=keep-walking>Keep walking&mldr;<a href=#keep-walking class=hanchor arialabel=Anchor>&#8983;</a></h2><p>変数X, Y, answerをそれぞれ初期値1に設定し、</p><ol><li>answerの値を X * Y + answer + 3 に更新</li><li>Xをインクリメント</li><li>Yをインクリメント</li></ol><p>という処理をXが525になるまで繰り返した時のanswerの値を求めなさい。という問題です。
+手動でも解けないことはなさそうですがプログラムを書きます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+    x <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
+    y <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
+    ans <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
+
+    <span style=color:#66d9ef>while</span>(x <span style=color:#f92672>&lt;=</span> <span style=color:#ae81ff>525</span>):
+        ans <span style=color:#f92672>=</span> x <span style=color:#f92672>*</span> y <span style=color:#f92672>+</span> ans <span style=color:#f92672>+</span> <span style=color:#ae81ff>3</span>
+        x <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+        y <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+    
+    <span style=color:#66d9ef>print</span>(ans)
+
+main()
+</code></pre></div><p>実行すると<code>48373851</code>と出力されます。これが答えになっています。</p><h2 id=quizbot>Quizbot<a href=#quizbot class=hanchor arialabel=Anchor>&#8983;</a></h2><p>与えられたurlを開くと、次のような画面が表示されます。<img src=../2021-01-06quizbot-1.png alt=quizbot-1>
+表示されているようなクイズに1000回正解すればいいようです。試しに適当な文字を入力して<code>answer</code>ボタンを押すとこうなります。<img src=../2021-01-06quizbot-2.png alt=quizbot-2>
+scoreは0のままですが、間違えてもそのまま次の問題へ行けるようです。さらに上部には前の問題の答えが表示されています。また、表示されるクイズの順番はいつも同じです。
+以上より、とりあえず最初に1000回間違えて正しい答えを表示・記録し、それを順番に入力しなおしていけばよいと分かります。
+もちろんプログラムを書いてこれを実現します。前述の「Are you fast enough?」でも使用したseleniumをここでも使用します。<br>まずは1000回間違えて答えを記録していくプログラムです。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>from</span> selenium <span style=color:#f92672>import</span> webdriver
+<span style=color:#f92672>from</span> selenium.webdriver.common.keys <span style=color:#f92672>import</span> Keys
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+    driver <span style=color:#f92672>=</span> webdriver<span style=color:#f92672>.</span>Chrome(executable_path<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;./driver/chromedriver.exe&#39;</span>)
+    driver<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#39;http://timesink.be/quizbot&#39;</span>)
+    ans <span style=color:#f92672>=</span> []
+    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>1000</span>):
+        box <span style=color:#f92672>=</span> driver<span style=color:#f92672>.</span>find_element_by_id(<span style=color:#e6db74>&#34;insert_answer&#34;</span>)
+        box<span style=color:#f92672>.</span>send_keys(<span style=color:#e6db74>&#34;`&#34;</span>)
+        btn <span style=color:#f92672>=</span> driver<span style=color:#f92672>.</span>find_element_by_name(<span style=color:#e6db74>&#34;submit&#34;</span>)
+        btn<span style=color:#f92672>.</span>click()
+        s <span style=color:#f92672>=</span> driver<span style=color:#f92672>.</span>find_element_by_id(<span style=color:#e6db74>&#34;answer&#34;</span>)<span style=color:#f92672>.</span>text
+        ans<span style=color:#f92672>.</span>append(s)
+    <span style=color:#66d9ef>with</span> open(<span style=color:#e6db74>&#34;quizbot_ans.txt&#34;</span>, <span style=color:#e6db74>&#39;w&#39;</span>) <span style=color:#66d9ef>as</span> f:
+        f<span style=color:#f92672>.</span>write(<span style=color:#e6db74>&#34;|&#34;</span><span style=color:#f92672>.</span>join(ans))
+
+main()
+</code></pre></div><p><code>ans</code>という配列に答えを記録し、最後に<code>quizbot_ans.txt</code>というテキストファイルに<code>|</code>区切りで答えを出力しています。</p><p>次は記録した答えを入力していくプログラムです。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>from</span> selenium <span style=color:#f92672>import</span> webdriver
+<span style=color:#f92672>from</span> selenium.webdriver.common.keys <span style=color:#f92672>import</span> Keys
+<span style=color:#f92672>import</span> time
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+    <span style=color:#66d9ef>with</span> open(<span style=color:#e6db74>&#39;quizbot_ans.txt&#39;</span>, <span style=color:#e6db74>&#39;r&#39;</span>) <span style=color:#66d9ef>as</span> f:
+        ans <span style=color:#f92672>=</span> f<span style=color:#f92672>.</span>read()<span style=color:#f92672>.</span>split(<span style=color:#e6db74>&#34;|&#34;</span>)
+    
+    driver <span style=color:#f92672>=</span> webdriver<span style=color:#f92672>.</span>Chrome(executable_path<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;./driver/chromedriver.exe&#39;</span>)
+    driver<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#39;http://timesink.be/quizbot&#39;</span>)
+    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>1000</span>):
+        box <span style=color:#f92672>=</span> driver<span style=color:#f92672>.</span>find_element_by_id(<span style=color:#e6db74>&#34;insert_answer&#34;</span>)
+        box<span style=color:#f92672>.</span>send_keys(ans[i])
+        btn <span style=color:#f92672>=</span> driver<span style=color:#f92672>.</span>find_element_by_name(<span style=color:#e6db74>&#34;submit&#34;</span>)
+        btn<span style=color:#f92672>.</span>click()
+
+main()
+time<span style=color:#f92672>.</span>sleep(<span style=color:#ae81ff>180</span>)
+</code></pre></div><p>実行に時間はかかりますが、15分ほどでフラグをゲットすることができました。</p><h1 id=old-tech>Old tech<a href=#old-tech class=hanchor arialabel=Anchor>&#8983;</a></h1><h2 id=punchcard>punchcard<a href=#punchcard class=hanchor arialabel=Anchor>&#8983;</a></h2><p>パンチカードの画像が与えられ、それを読み解く問題です。パンチカードにもいくつか種類があるようですが、問題のパンチカードは80列であることから、IBMの80欄カードであると推測しました。<a href=https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%B3%E3%83%81%E3%82%AB%E3%83%BC%E3%83%89#IBM%E3%81%AE80%E6%AC%84%E3%82%AB%E3%83%BC%E3%83%89%E3%81%A8%E6%96%87%E5%AD%97%E3%82%B3%E3%83%BC%E3%83%89>wikipedia</a>の対応表から一列ずつ読み取っていくとフラグが得られました。</p><h1 id=cryptography>Cryptography<a href=#cryptography class=hanchor arialabel=Anchor>&#8983;</a></h1><h2 id=sea-code>Sea code<a href=#sea-code class=hanchor arialabel=Anchor>&#8983;</a></h2><p>モールス信号を解読する問題です。<code>._ _... _._.</code>のようにモールス信号を入力すると対応するアルファベットを表示してくれる<a href=https://l08084.github.io/morse-code-translate-website/>サイト</a>を活用しつつ、音声ファイルをスローで再生しながら愚直に解読していきました。</p><h2 id=dont-be-salty>Don&rsquo;t be salty<a href=#dont-be-salty class=hanchor arialabel=Anchor>&#8983;</a></h2><p>パスワードのハッシュ値とソルトという文字列が与えられて、元のパスワードを復元しろ。という問題です。
+ただし前提として、</p><ul><li>ソルトはパスワードの末尾に加えられたこと</li><li>パスワードは5文字で、小文字であること</li></ul><p>が仮定されています。</p><p>ソルトとは、パスワードに付け加えられるランダムな文字列のことです。
+ソルトを付け加えてからハッシュ関数にかけることで、レインボーテーブルなどを用いた事前計算による攻撃を防ぐことができます。
+したがって通常ソルトを使ってハッシュされた値から平文を求めることは困難です。
+しかし今回は、パスワードの長さが5文字であることが事前にわかっています。
+この時点でパスワードの候補は<code>aaaaa</code>, <code>aaaab</code>,&mldr;, <code>zzzzz</code>までの　26^5 = 11881376通りと大体10^7通りです。
+この程度であれば総当たりで元のパスワードを求めることができます。
+ハッシュ値が32文字であることから、ハッシュ暗号はmd5と推測できます。</p><p>以上をまとめてプログラムを書きます。書いたプログラムは以下です。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> hashlib
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+    passwordhash <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;2bafea54caf6f8d718be0f234793a9be&#39;</span>
+    salt <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;04532@#!!&#39;</span>
+    alp <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;abcdefghijklmnopqrstuvwxyz&#39;</span>
+    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> alp:
+        <span style=color:#66d9ef>for</span> j <span style=color:#f92672>in</span> alp:
+            <span style=color:#66d9ef>for</span> k <span style=color:#f92672>in</span> alp:
+                <span style=color:#66d9ef>for</span> l <span style=color:#f92672>in</span> alp:
+                    <span style=color:#66d9ef>for</span> m <span style=color:#f92672>in</span> alp:
+                        s <span style=color:#f92672>=</span> i <span style=color:#f92672>+</span> j <span style=color:#f92672>+</span> k <span style=color:#f92672>+</span> l <span style=color:#f92672>+</span> m <span style=color:#f92672>+</span> salt
+                        hs <span style=color:#f92672>=</span> hashlib<span style=color:#f92672>.</span>md5(s<span style=color:#f92672>.</span>encode())<span style=color:#f92672>.</span>hexdigest()
+                        <span style=color:#66d9ef>if</span> hs <span style=color:#f92672>==</span> passwordhash:
+                            <span style=color:#66d9ef>print</span>(s)
+                            exit()
+
+main()
+</code></pre></div><p>なかなか仰々しい見た目をしていますが、一番明示的かなと個人的には思っています(言い訳)。
+パスワードの長さが常に5文字なので、5重ループのごり押しをしていますが、もっと文字数の多いパスワードであれば再帰関数を使って実装するとよいでしょう(保険)。</p><p>ライブラリとしてhashlibを使っていますが、これは標準ライブラリです。メジャーなハッシュ関数を簡単に使うことができます。
+総当たりで生成した文字列の末尾にソルトを付け加えた文字列をmd5でハッシュし、与えられたハッシュ値と一致するかを調べています。</p><p>実行すると<code>brute04532@#!!</code>と表示されます。これから末尾のソルトを除いた文字列が答えです。</p><h1 id=internet>Internet<a href=#internet class=hanchor arialabel=Anchor>&#8983;</a></h1><h2 id=readme>Readme<a href=#readme class=hanchor arialabel=Anchor>&#8983;</a></h2><p><a href=https://ctf.brixel.space/guide>brixelCTFのGuide</a>の下部参照です。
+<a href=https://ctftime.org/user/97775>312k</a>の助言で解きました(申し訳なさがあったりなかったり&mldr;)。</p><h2 id=login2>login2<a href=#login2 class=hanchor arialabel=Anchor>&#8983;</a></h2><p>与えられたurlを開くと、ログインフォームっぽい画面が表示されます。
+開発者モードでソースを見ると、やや難読化されたjavascriptが見れます。
+どうやらソースに書かれた文字列と入力された文字列を6文字ずつ区切って比較し、一致しているか判定しているようです。
+すべてのif文をtrueにする文字列を復元するとフラグを得ることができます。
+ちなみに何度か登場している<code>.substring(a, b)</code>のようなメソッドは、a文字目からb文字目まで(b文字目は含まない)の連続した部分文字列を取り出す機能があります。</p><h2 id=login3>login3<a href=#login3 class=hanchor arialabel=Anchor>&#8983;</a></h2><p>login2の問題と同じように、入力されたパスワードの文字列をif文で比較していますが、今度は直接文字列と比較せず、password.txtというファイルの中身と比較しているようです。
+password.txtの中身は問題のurlの末尾の<code>/index.html</code>を<code>/password.txt</code>と変えることで簡単に見ることができました。
+password.txtの中身がフラグになっています。</p><h2 id=login4>login4<a href=#login4 class=hanchor arialabel=Anchor>&#8983;</a></h2><p>login3の問題と同じように、入力されたパスワードの文字列をpassword.txtの中身と比較していますが、今度は読み込んだpassword.txtを<code>atob()</code>という関数に入れてから比較を行っています。
+調べてみると<code>atob()</code>には、Base64でエンコードされた文字列をデコードする機能があるようです。
+login3と同じ要領でpassword.txtをのぞくと、Base64でエンコードされたと思われる末尾が<code>=</code>の文字列が入っています。
+この文字列をBase64デコードすると、フラグを得ることができます。
+<a href=https://ctftime.org/user/97775>312k</a>によれば、入力した文字列をBase64デコードしてくれる<a href=https://tool-taro.com/base64_decode/>サイト</a>もあるようです。</p><p>私はプログラムを書きました。pythonの標準ライブラリでbase64を扱えます。
+コードは以下です。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> base64
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+    username <span style=color:#f92672>=</span> <span style=color:#e6db74>b</span><span style=color:#e6db74>&#39;YWRtaW4=&#39;</span>
+    <span style=color:#66d9ef>print</span>(base64<span style=color:#f92672>.</span>b64decode(username)<span style=color:#f92672>.</span>decode())
+    password <span style=color:#f92672>=</span> <span style=color:#e6db74>b</span><span style=color:#e6db74>&#39;YnJpeGVsQ1RGe2V2ZW5fYmFzZTY0X3dvbnRfbWFrZV95b3Vfc2VjdXJlfQ==&#39;</span>
+    <span style=color:#66d9ef>print</span>(base64<span style=color:#f92672>.</span>b64decode(password)<span style=color:#f92672>.</span>decode())
+
+main()
+</code></pre></div><p>実行するとフラグが表示されます。</p><h2 id=snackshack-awards>SnackShack awards<a href=#snackshack-awards class=hanchor arialabel=Anchor>&#8983;</a></h2><p>店の人気投票が行われているサイトで不正な投票をして、負けている店に5000票加えろ。という問題です。
+urlを開くと各店の画像や説明とともに、投票のためのボタンが用意されています。
+最大でも5票しか投票できない仕様です。</p><p>結論としては、5000票入れられるようにhtmlファイルを書き換えます。
+与えられたurlからページのhtmlファイルをダウンロードするなりして、投票のために与えるポイントを選ぶ部分(selectタグ)に記述された数字を5000に書き換えます。
+あとは書き換えたファイルを実行して、目的の店に投票するだけです。</p><h1 id=おわりに>おわりに<a href=#おわりに class=hanchor arialabel=Anchor>&#8983;</a></h1><p>CTFへの挑戦はほぼ初めてでしたが、かなり楽しめました。CTFたのしい。
+解けた問題のジャンルに偏りがあったので、様々な問題に対応できるように勉強していきたいです。</p></div></div><div class=pagination><div class=pagination__title><span class=pagination__title-h>ほかの投稿も読む</span><hr></div><div class=pagination__buttons><span class="button next"><a href=https://312k.github.io/nekonyaa.github.io/post/post3/brixelctf-312k/><span class=button__text>BrixelCTF-312k write up</span>
+<span class=button__icon>→</span></a></span></div></div></div></div><footer class=footer><div class=footer__inner><div class="copyright copyright--user"><span>© 2020 Powered by Hugo :: © nekonyaa</span>
+<span>:: Theme made by <a href=https://twitter.com/panr>panr</a></span></div></div></footer><script src=https://312k.github.io/nekonyaa.github.io/assets/main.js></script><script src=https://312k.github.io/nekonyaa.github.io/assets/prism.js></script></div></body></html>
