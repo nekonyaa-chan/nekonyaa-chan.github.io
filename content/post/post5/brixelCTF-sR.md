@@ -1,5 +1,5 @@
 ---
-title: "BrixelCTF-tt6mzn write up"
+title: "BrixelCTF-sR write up"
 date: 2020-01-18T18:55:41+09:00
 author: "sR"
 categories: ["Writeup"]
