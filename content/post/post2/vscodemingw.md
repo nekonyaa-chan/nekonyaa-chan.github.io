@@ -6,11 +6,11 @@ author: "312k"
 tags: ["Visual Studio Code","Mingw","312k"]
 description: "Visual Studio CodeでC言語をするための説明です。"
 ---
-Visual Studio CodeでC言語を使うための設定の紹介です。
-<!--more-->
 # はじめに
 当投稿ではMingw-w64にPATHがデフォルト状態で通っていることを前提としています。またセットアップには[Visual Studio Code](https://code.visualstudio.com/)がインストールしてください。
+<!--more-->
 またユーザー名は"まぞく"としてありますのでお使いの環境に合わせて読み替えてください。
+
 # 拡張機能のダウンロード
 まずはCtrl+Shift+xと入力し、C/C++拡張機能をダウンロードしてください。
 
