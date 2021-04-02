@@ -1,18 +1,19 @@
 baseurl = "https://312k.github.io/nekonyaa.github.io/"
 languageCode = "ja-jp"
-theme = "terminal"
+theme = "fuji"
 paginate = 5
 defaultContentLanguage = "ja"
 canonifyurls = true
 enableRobotsTXT = true
+summaryLength = 100
+math=true
 [params]
+    author = "nekonyaa"
+      subTitle = "CTFのWrite up"
+          sourceURL = "https://github.com/312k/nekonyaa.github.io"
   # dir name of your main content (default is `content/posts`).
   # the list of set content will show up on your index page (baseurl).
   contentTypeName = "post"
-
-  # ["orange", "blue", "red", "green", "pink"]
-  themeColor = "orange"
-
   # if you set this to 0, only submenu trigger will be visible
   showMenuItems = 4
 
@@ -26,8 +27,6 @@ enableRobotsTXT = true
   centerTheme = false
 
   # set a custom favicon (default is a `themeColor` square)
-  # favicon = "favicon.ico"
-
   # set post to show the last updated
   # If you use git, you can set `enableGitInfo` to `true` and then post will automatically get the last updated
   showLastUpdated = true
@@ -37,7 +36,6 @@ enableRobotsTXT = true
   # set all headings to their default size (depending on browser settings)
   # it's set to `true` by default
   # oneHeadingSize = false
-
 [params.twitter]
   # set Twitter handles for Twitter cards
   # see https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started#card-and-content-attribution
@@ -59,24 +57,33 @@ enableRobotsTXT = true
     missingContentMessage = "ページが見つかりませんでした...."
     missingBackButtonLabel = "ホームページへ戻る"
 
-    [languages.ja.params.logo]
       logoText = "nekonyaa"
       logoHomeLink = "https://312k.github.io/nekonyaa.github.io/"
+[menu]
+  [[menu.nav]]
+      name = "Home"
+          url = "/"
+              weight = 1
 
-    [languages.ja.menu]
-      [[languages.ja.menu.main]]
+          [[menu.nav]]
+
         identifier = "about"
         name = "このサイトについて"
         url = "/about"
-      [[languages.ja.menu.main]]
+          [[menu.link]]
         identifier = "CTFTIME"
         name = "CTFTIME"
         url = "https://ctftime.org/team/141534"
-      [[languages.ja.menu.main]]
+          [[menu.nav]]
+
       	identifier = "大会の結果"
       	name = "大会の結果"
       	url = "/result"
-      [[languages.ja.menu.main]]
+          [[menu.nav]]
+
       	identifier="RSS"
       	name ="購読する"
       	url= "post/index.xml"
+  [[menu.link]]
+      name = "GitHub"
+          url = "https://github.com/312k/nekonyaa.github.io"
