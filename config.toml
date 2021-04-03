@@ -6,6 +6,8 @@ defaultContentLanguage = "ja"
 canonifyurls = true
 enableRobotsTXT = true
 summaryLength = 100
+ googleAnalytics = "UA-186834406-6" # Set your Google Analytics UA here
+
 [params]
     author = "nekonyaa"
       subTitle = "CTFのWrite up"
@@ -69,6 +71,11 @@ summaryLength = 100
         identifier = "about"
         name = "About"
         url = "/about"
+          [[menu.nav]]
+          identifier="privacypolicy"
+          name="PrivacyPolicy"
+          url="/privacypolicy"
+
           [[menu.link]]
         identifier = "CTFTIME"
         name = "CTFTIME"
