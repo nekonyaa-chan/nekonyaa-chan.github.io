@@ -67,7 +67,7 @@ summaryLength = 100
           [[menu.nav]]
 
         identifier = "about"
-        name = "このサイトについて"
+        name = "About"
         url = "/about"
           [[menu.link]]
         identifier = "CTFTIME"
@@ -76,13 +76,13 @@ summaryLength = 100
           [[menu.nav]]
 
       	identifier = "大会の結果"
-      	name = "大会の結果"
+      	name = "Result"
       	url = "/result"
           [[menu.nav]]
 
       	identifier="RSS"
-      	name ="購読する"
-      	url= "post/index.xml"
+      	name ="RSS"
+      	url= "/index.xml"
   [[menu.link]]
       name = "GitHub"
           url = "https://github.com/312k/nekonyaa.github.io"
