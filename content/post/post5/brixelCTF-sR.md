@@ -8,7 +8,7 @@ tags: ["CTF", "Writeup", "sR"]
 # はじめに
 BrixelCTFに参加しました。
 2問解くことができ、10ポイント獲得することが出来ました。
-
+<!--more-->
 # Cryptography
 ## Merda
 イタリア人のメッセンジャーが残した```ymj kqfl nx gwncjqHYK{uneefsfutqn}```の```gwncjqHYK{}```を今回のBrixelCTFのフラグの形```brixelCTF```に合わせてみると、全てアルファベット順で見て左に5ずつずれていることがわかります。これを全体に当てはめてみると、```the flag is brixelCTF{pizzanapoli}```となり、フラグは```brixelCTF{pizzanapoli}```だとわかります。

@@ -9,6 +9,7 @@ tags : [ "CTF", "Writeup","312k" ]
 年末から年始にかけてBrixelCTFに参加しました。
 [解いた問題](https://ctf.brixel.space/users/104)は16問で獲得スコアが212ポイント、順位は830人中317位でした。
 初めてwrite upを書いてみます。
+<!--more-->
 ## OSINT
 ### A quick search
 この問題は画像からなんという名前のタワーなのか調べる問題です。[Google画像検索](https://www.google.co.jp/imghp?hl=ja)で写真のタワーを検索しましたところ、[Eben_Ezer](https://en.wikipedia.org/wiki/Eben-Ezer_Tower)がFlagでした。

@@ -5,4 +5,7 @@ author = "nekonyaa"
 +++
 
 # 今までにチームで出た大会の結果
-1.[Brixel CTF winter edition](https://ctf.brixel.space/) 総得点 212 順位 318/831
+1. [Brixel CTF winter edition](https://ctf.brixel.space/) (2020/12/26 21:00 - 2021/01/04 04:00) 総得点:212 順位:318/831
+2. [UTCTF](https://utctf.live/) (2021/03/13 09:00 - 2021/03/15 09:00) 総得点:1125 順位:399/697
+3. [LINE CTF](https://linectf.me/) (2021/03/20 09:00 - 2021/03/21 09:00) 総得点:50 順位:348/680
+4. [pico CTF](https://picoctf.org/) (2021/03/17 01:00 - 2021/03/31 04:00) 総得点:580 順位:27/83(日本の学生)

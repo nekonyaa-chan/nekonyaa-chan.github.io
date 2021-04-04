@@ -10,7 +10,7 @@ tags : [ "CTF", "Writeup", "tt6mzn" ]
 結果は[こんな感じ](https://ctf.brixel.space/users/109)。
 Internet・Programming・Cryptographyを中心に11問を解くことができました。
 チームとしてはスコアが212ポイント、順位が830人中317位でした。
-
+<!--more-->
 # Programming
 ## Are you fast enough?
 urlを開くと次のような画面が表示されます。![Are you fast enough?](../2021-01-06areyoufastenough.png)
