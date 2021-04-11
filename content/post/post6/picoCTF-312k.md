@@ -47,7 +47,7 @@ Oh, help? I actually don't do much, but I do have this flag here: picoCTF{b1scu1
 
 ## Tab, Tab, Attack
 ### 解いた過程
-この問題で与えられたzipには階層が深いです。7zipを使うと便利です。
+与えられたファイルは複雑なディレクトリ構造をしています。このようなときには7zipを使うと便利です。
 最下層にはELFファイルがありました。
 取り出してfileコマンドで確認したところ
 ``` shell
