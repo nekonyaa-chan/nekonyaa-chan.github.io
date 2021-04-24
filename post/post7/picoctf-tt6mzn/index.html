@@ -1,0 +1,316 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=HandheldFriendly content="True"><meta http-equiv=x-ua-compatible content="IE=edge"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=generator content="Hugo 0.79.1"><link rel=apple-touch-icon sizes=180x180 href=https://312k.github.io/nekonyaa.github.io/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=https://312k.github.io/nekonyaa.github.io/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=https://312k.github.io/nekonyaa.github.io/favicon-16x16.png><link rel=manifest href=https://312k.github.io/nekonyaa.github.io/site.webmanifest><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#ffffff"><title>picoCTF 2021 writeup by tt6mzn - nekonyaa</title><meta name=author content="nekonyaa"><meta name=keywords content="CTF,Writeup,tt6mzn,crypto"><meta property="og:title" content="picoCTF 2021 writeup by tt6mzn"><meta name=twitter:title content="picoCTF 2021 writeup by tt6mzn"><meta property="og:type" content="article"><meta property="og:url" content="https://312k.github.io/nekonyaa.github.io/post/post7/picoctf-tt6mzn/"><meta property="og:description" content="初めに
+picoCTF 2021に参加しました。
+cryptoの問題を5問解くことができました。
+解いた問題は以下です。
+
+MOD 26
+Mind your Ps and Qs
+Dachshund Attacks
+No Padding, No Problem
+Pixelated"><meta name=twitter:description content="初めに
+picoCTF 2021に参加しました。
+cryptoの問題を5問解くことができました。
+解いた問題は以下です。
+
+MOD 26
+Mind your Ps and Qs
+Dachshund Attacks
+No Padding, No Problem
+Pixelated"><meta name=twitter:card content="summary"><meta property="article:published_time" content="2021-04-09T07:26:42+09:00"><meta property="article:modified_time" content="2021-04-09T07:26:42+09:00"><style>@media(prefers-color-scheme:dark){body[data-theme=auto] img{filter:brightness(60%)}}body[data-theme=dark] img{filter:brightness(60%)}</style><link rel=stylesheet href=https://312k.github.io/nekonyaa.github.io/assets/css/fuji.min.css><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','UA-186834406-6');</script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-186834406-6"></script></head><body data-theme=auto><script data-cfasync=false>var fujiThemeData=localStorage.getItem('fuji_data-theme');if(!fujiThemeData){localStorage.setItem('fuji_data-theme','auto');}else{if(fujiThemeData!=='auto'){document.body.setAttribute('data-theme',fujiThemeData==='dark'?'dark':'light');}}</script><header><div class="container-lg clearfix"><div class="col-12 header"><a class=title-main href=https://312k.github.io/nekonyaa.github.io/>nekonyaa</a>
+<span class=title-sub>CTFのwrite upなど</span></div></div></header><main><div class="container-lg clearfix"><div class="col-12 col-md-9 float-left content"><article><h2 class="post-item post-title"><a href=https://312k.github.io/nekonyaa.github.io/post/post7/picoctf-tt6mzn/>picoCTF 2021 writeup by tt6mzn</a></h2><div class="post-item post-meta"><span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-04-09</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=https://312k.github.io/nekonyaa.github.io/tags/ctf>CTF</a>&nbsp;<a href=https://312k.github.io/nekonyaa.github.io/tags/writeup>Writeup</a>&nbsp;<a href=https://312k.github.io/nekonyaa.github.io/tags/tt6mzn>tt6mzn</a>&nbsp;<a href=https://312k.github.io/nekonyaa.github.io/tags/crypto>crypto</a>&nbsp;</span></div><div class="post-content markdown-body"><h2 id=初めに>初めに</h2><p><a href=https://play.picoctf.org/events/34 target=_blank>picoCTF 2021</a>に参加しました。
+cryptoの問題を5問解くことができました。
+解いた問題は以下です。</p><ul><li>MOD 26</li><li>Mind your Ps and Qs</li><li>Dachshund Attacks</li><li>No Padding, No Problem</li><li>Pixelated</li></ul><h2 id=mod-26>Mod 26</h2><h3 id=問題文>問題文</h3><blockquote><p>Cryptography can be easy, do you know what ROT13 is?
+cvpbPGS{arkg_gvzr_V&rsquo;yy_gel_2_ebhaqf_bs_ebg13_hyLicInt}</p></blockquote><p>問題ページ: <a href="https://play.picoctf.org/practice/challenge/144?category=2&originalEvent=34&page=1">https://play.picoctf.org/practice/challenge/144?category=2&originalEvent=34&page=1</a></p><h3 id=解説>解説</h3><p>問題文にもある通り、ROT13でflagを暗号化した文字列が与えられているようです。
+ROT13とは、各文字をアルファベット順に13文字ずつずらして置き換える、単一換字式暗号の一つです。
+アルファベットは全部で26文字なので、2回暗号化すると元に戻るという性質があります。
+地道に13文字ずらしても簡単にflagを得ることができますが、プログラムも示しておくことにします。
+以下pythonによる実装です。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+    c <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;cvpbPGS{arkg_gvzr_V&#39;yy_gel_2_ebhaqf_bs_ebg13_hyLicInt}&#34;</span>  <span style=color:#75715e># encrypted flag</span>
+    alp <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;abcdefghijklmnopqrstuvwxyz&#34;</span>  <span style=color:#75715e># アルファベット</span>
+    ans <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&#34;</span>  <span style=color:#75715e># 出力用文字列</span>
+    <span style=color:#66d9ef>for</span> t <span style=color:#f92672>in</span> c:
+        <span style=color:#66d9ef>if</span> t <span style=color:#f92672>in</span> alp:  <span style=color:#75715e># 小文字の場合</span>
+            ans <span style=color:#f92672>+=</span> alp[alp<span style=color:#f92672>.</span>index(t) <span style=color:#f92672>-</span> <span style=color:#ae81ff>13</span>]  <span style=color:#75715e># 13文字ずらす</span>
+        <span style=color:#66d9ef>elif</span> t <span style=color:#f92672>in</span> alp<span style=color:#f92672>.</span>upper(): <span style=color:#75715e># 大文字の場合</span>
+            ans <span style=color:#f92672>+=</span> alp[alp<span style=color:#f92672>.</span>upper()<span style=color:#f92672>.</span>index(t) <span style=color:#f92672>-</span> <span style=color:#ae81ff>13</span>]<span style=color:#f92672>.</span>upper()  <span style=color:#75715e># 13文字ずらす</span>
+        <span style=color:#66d9ef>else</span>:  <span style=color:#75715e># アルファベットでない場合はそのまま加える</span>
+            ans <span style=color:#f92672>+=</span> t
+    <span style=color:#66d9ef>print</span>(ans)
+
+main()
+</code></pre></div><p>出力:</p><pre><code>picoCTF{next_time_I'll_try_2_rounds_of_rot13_ulYvpVag}
+</code></pre><h2 id=mind-your-ps-and-qs>Mind your Ps and Qs</h2><h3 id=問題文-1>問題文</h3><blockquote><p>In RSA, a small e value can be problematic, but what about N?
+Can you decrypt this?</p></blockquote><p>問題ページ: <a href="https://play.picoctf.org/practice/challenge/162?category=2&originalEvent=34&page=1">https://play.picoctf.org/practice/challenge/162?category=2&originalEvent=34&page=1</a></p><p>また、以下のテキストが書かれたファイルが与えられます。</p><pre><code>Decrypt my super sick RSA:
+c: 861270243527190895777142537838333832920579264010533029282104230006461420086153423
+n: 1311097532562595991877980619849724606784164430105441327897358800116889057763413423
+e: 65537
+</code></pre><h3 id=解説-1>解説</h3><p>RSA暗号の問題です。
+cは暗号文、nとeは公開鍵でしょう。
+問題文で「nが小さい場合にはどのような問題があるか？」と聞かれていることから、nを素因数分解できるのではないかと考えました。
+今回は、nの値を<a href="http://factordb.com/index.php?query=1311097532562595991877980619849724606784164430105441327897358800116889057763413423" target=_blank>factordb</a>に入れるとp, qの値をすぐに取得することができました:
+$$p = 1955175890537890492055221842734816092141$$
+$$q = 670577792467509699665091201633524389157003$$
+pとqの値がわかれば秘密鍵dを計算でき、暗号文を復号することができます。</p><p>少し数学の解説をします。
+公開鍵eと秘密鍵dの間には、以下の関係があります。
+$$
+ed \equiv 1 \ (mod \ \phi(n)) \tag{1}
+$$
+ここで、φ(n)はオイラー関数といい、n以下の自然数のうちnと互いに素であるものの個数を表します。
+nはp, qの二つの素数の積であり、素数とオイラー関数に関する諸性質から、次式が成り立ちます。
+$$
+\phi(n) = \phi(pq) = \phi(p)\phi(q) = (p - 1)(q - 1) \tag{2}
+$$
+(1)式について、(2)式より、秘密鍵d以外の値がわかっているので、dを求めることができます。
+(1)式をよく見ると、dは法φ(n)におけるeの乗法逆元であると分かります。
+法φ(n)におけるeの乗法逆元を計算すれば、それがdになるということです。
+合同式における乗法逆元は以下のように計算することができます。
+合同式の定義から、ある整数kが存在し、(1)式は次のように変形できます。
+$$
+ed = k\phi(n) + 1
+$$
+$$
+ed - k\phi(n) = 1 \tag{3}
+$$
+eとφ(n)の値は既知なので、(3)式は未知数にdとkの2つをもつ方程式になります。
+この方程式を満たす<strong>整数</strong>の組(d, k)が一組でも見つかれば、秘密鍵を計算できたことになります。
+このように、ax + by = 1のような形をした方程式は一次不定方程式と呼ばれ、解を求めるアルゴリズムに<strong>拡張ユークリッドの互除法</strong>があります。
+このような方法で秘密鍵dを計算したら、あとは復号です。
+暗号文cと平文mの間には次の関係があります。
+$$
+m = c^d \ (mod \ n)
+$$
+よって、法をnとし、cをd乗すれば復号完了です。
+dはたいてい非常に大きな値となるので、繰り返し二乗法と呼ばれるアルゴリズムを使ってmを計算します。
+pythonでは<code>pow(c, d, n)</code>を実行することでこれを計算しています。
+以下、復号の処理を記述したプログラムです。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> binascii
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>extgcd</span>(a, b):
+    <span style=color:#e6db74>&#34;&#34;&#34;
+</span><span style=color:#e6db74>    拡張ユークリッドの互除法のアルゴリズム。
+</span><span style=color:#e6db74>    ax + by = 1を満たす整数解のうち一つを返す。
+</span><span style=color:#e6db74>    dはaとbの最大公約数。
+</span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
+    <span style=color:#66d9ef>if</span> b <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+        x <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
+        y <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+        d <span style=color:#f92672>=</span> a
+        <span style=color:#66d9ef>return</span> x, y, d
+    y, x, d <span style=color:#f92672>=</span> extgcd(b, a <span style=color:#f92672>%</span> b)
+    y <span style=color:#f92672>-=</span> a <span style=color:#f92672>//</span> b <span style=color:#f92672>*</span> x
+    <span style=color:#66d9ef>return</span> x, y, d
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+    c <span style=color:#f92672>=</span> <span style=color:#ae81ff>861270243527190895777142537838333832920579264010533029282104230006461420086153423</span>
+    n <span style=color:#f92672>=</span> <span style=color:#ae81ff>1311097532562595991877980619849724606784164430105441327897358800116889057763413423</span>
+    e <span style=color:#f92672>=</span> <span style=color:#ae81ff>65537</span>
+    p <span style=color:#f92672>=</span> <span style=color:#ae81ff>1955175890537890492055221842734816092141</span>
+    q <span style=color:#f92672>=</span> <span style=color:#ae81ff>670577792467509699665091201633524389157003</span>  <span style=color:#75715e># factordb.comより、n = p * q</span>
+    d, k, _ <span style=color:#f92672>=</span> extgcd(e, (p <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>*</span> (q <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>))  <span style=color:#75715e># 秘密鍵dを計算 ed ≡ 1 (mod φ(n))</span>
+    <span style=color:#66d9ef>while</span> d <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>0</span>:  <span style=color:#75715e># dが負の場合</span>
+        d <span style=color:#f92672>+=</span> (p <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>*</span> (q <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>)  <span style=color:#75715e># dが正になるまでφ(n)を加える。d ≡ d + φ(n) (mod φ(n))</span>
+    m <span style=color:#f92672>=</span> pow(c, d, n)  <span style=color:#75715e># 復号</span>
+    <span style=color:#66d9ef>print</span>(binascii<span style=color:#f92672>.</span>a2b_hex(hex(m)[<span style=color:#ae81ff>2</span>:]))  <span style=color:#75715e># 復号結果を16進数にしてasciiで読み込む</span>
+
+main()
+</code></pre></div><p>復号によって得られるmも整数ですが、今回は16進数からasciiへ変換するとflagが得られました。</p><p>出力:</p><pre><code>b'picoCTF{sma11_N_n0_g0od_13686679}'
+</code></pre><h2 id=dachshund-attacks>Dachshund Attacks</h2><h3 id=問題文-2>問題文</h3><blockquote><p>What if d is too small? Connect with nc mercury.picoctf.net 30761.</p></blockquote><p>問題ページ: <a href="https://play.picoctf.org/practice/challenge/159?category=2&originalEvent=34&page=1">https://play.picoctf.org/practice/challenge/159?category=2&originalEvent=34&page=1</a></p><h3 id=解説-2>解説</h3><p>与えられたncコマンドを実行すると次のように表示されます</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>Welcome to my RSA challenge!
+e: <span style=color:#ae81ff>3070829700239455976883878414604093438206266837369717361794763944651532103706202337736349466828056004413456919639172486473404498955339841069845136049100164906613702908041502235945890406177776140981324521044230110718413408112341326701490234365228510119450657191961358433234923061072280228697549683933114501481</span>
+n: <span style=color:#ae81ff>110505872233429198169973425316055139805570136075808183559284285621999587838873031254821755017539923544980198703672159247152031606082777918574079803935392404278339509079438647855311312184344197781477471168000495778504359880500385048665789633312963075117728329148430950391376648492385850802904439184297830540199</span>
+c: <span style=color:#ae81ff>2710765152254052204350088211730045170026979866972097876665346611429745891295183151829146438240672408168905672840421019823527410925132454967314497420189742261400642836396953571077546511416196939481946798085929694870217596368346321522506929803298854285776090403050813582333739253115979037581174348279474186781</span>
+</code></pre></div><p>RSA暗号の問題です。先ほどの問題と同様に、(e, n)が公開鍵、cは暗号文でしょう。
+ぱっと見でeの値が非常に大きいことがわかります。
+eの値が大きいので、秘密鍵dの値は小さいのではないかと推測できます。
+dの値が十分に小さいときに、公開鍵から秘密鍵を求める方法として<strong>Wiener&rsquo;s Attack</strong>というアルゴリズムが知られています。
+実装は<a href=http://inaz2.hatenablog.com/entry/2016/01/15/011138 target=_blank>こちら</a>のサイトを参考にしました。
+正直解説できるほど理解できていません&mldr;要勉強です。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> sys
+<span style=color:#f92672>import</span> gmpy2
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>continued_fraction</span>(n, d):
+    cf <span style=color:#f92672>=</span> []
+    <span style=color:#66d9ef>while</span> d:
+        q <span style=color:#f92672>=</span> n <span style=color:#f92672>//</span> d
+        cf<span style=color:#f92672>.</span>append(q)
+        n, d <span style=color:#f92672>=</span> d, n<span style=color:#f92672>-</span>d<span style=color:#f92672>*</span>q
+    <span style=color:#66d9ef>return</span> cf
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>convergents_of_contfrac</span>(cf):
+    n0, n1 <span style=color:#f92672>=</span> cf[<span style=color:#ae81ff>0</span>], cf[<span style=color:#ae81ff>0</span>]<span style=color:#f92672>*</span>cf[<span style=color:#ae81ff>1</span>]<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>
+    d0, d1 <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>, cf[<span style=color:#ae81ff>1</span>]
+    <span style=color:#66d9ef>yield</span> (n0, d0)
+    <span style=color:#66d9ef>yield</span> (n1, d1)
+
+    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>2</span>, len(cf)):
+        n2, d2 <span style=color:#f92672>=</span> cf[i]<span style=color:#f92672>*</span>n1<span style=color:#f92672>+</span>n0, cf[i]<span style=color:#f92672>*</span>d1<span style=color:#f92672>+</span>d0
+        <span style=color:#66d9ef>yield</span> (n2, d2)
+        n0, n1 <span style=color:#f92672>=</span> n1, n2
+        d0, d1 <span style=color:#f92672>=</span> d1, d2
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>wieners_attack</span>(e, n):
+    cf <span style=color:#f92672>=</span> continued_fraction(e, n)
+    convergents <span style=color:#f92672>=</span> convergents_of_contfrac(cf)
+
+    <span style=color:#66d9ef>for</span> k, d <span style=color:#f92672>in</span> convergents:
+        <span style=color:#66d9ef>if</span> k <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+            <span style=color:#66d9ef>continue</span>
+        phi, rem <span style=color:#f92672>=</span> divmod(e<span style=color:#f92672>*</span>d<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, k)
+        <span style=color:#66d9ef>if</span> rem <span style=color:#f92672>!=</span> <span style=color:#ae81ff>0</span>:
+            <span style=color:#66d9ef>continue</span>
+        s <span style=color:#f92672>=</span> n <span style=color:#f92672>-</span> phi <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>
+        D <span style=color:#f92672>=</span> s<span style=color:#f92672>*</span>s <span style=color:#f92672>-</span> <span style=color:#ae81ff>4</span><span style=color:#f92672>*</span>n
+        <span style=color:#66d9ef>if</span> D <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>and</span> gmpy2<span style=color:#f92672>.</span>is_square(D):
+            <span style=color:#66d9ef>return</span> d
+
+n <span style=color:#f92672>=</span> <span style=color:#ae81ff>81702121259645210848329041298621911731308931528999300611542107483167394520147920988501412851993357290517573032808604824618776206650821201762707694884361695333944060255745971548699981879210199347918079597184207816291633530259703981583733282451269575876354063551829116614248443148345946177485432011804652369581</span>
+e <span style=color:#f92672>=</span> <span style=color:#ae81ff>11609099254909807110101727759408267061621894543044975262498654253408493951585314575221197254212549745656354783012604696930490128993753864169773594360640319507709080627778405645195791512199154607457251637261288752185504729725537738293869976272095762415259541559692195951865902134649996661492510958767684875777</span>
+
+d <span style=color:#f92672>=</span> wieners_attack(e, n)
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#34;found d: </span><span style=color:#e6db74>%d</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> d)
+</code></pre></div><p>出力:</p><pre><code>found d: 12342311800967039706490053962487796040552667932079830404551330408695976430313
+</code></pre><p>dの値がわかれば、先ほどの問題(Mind your Ps and Qs)と同じ手順で暗号文を復号できます。</p><p>復号結果:</p><pre><code>picoCTF{proving_wiener_8652838}
+</code></pre><h2 id=no-padding-no-problem>No Padding, No Problem</h2><h3 id=問題文-3>問題文</h3><blockquote><p>Oracles can be your best friend, they will decrypt anything, except the flag&rsquo;s ciphertext.
+How will you break it? Connect with nc mercury.picoctf.net 60368.</p></blockquote><p>問題ページ: <a href="https://play.picoctf.org/practice/challenge/154?category=2&originalEvent=34&page=1">https://play.picoctf.org/practice/challenge/154?category=2&originalEvent=34&page=1</a>
+与えられたncコマンドを実行すると以下のように表示されます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>Welcome to the Padding Oracle Challenge
+This oracle will take anything you give it and decrypt using RSA. It will not accept the ciphertext with the secret message... Good Luck!
+
+
+n: <span style=color:#ae81ff>98779204515760491613252017713866633644034082126200123842168625557656177578130012687912514131281113056903910303216672999399754424804730783066508774102800055805478423203358748210062773809185231795871320759419243720061802838014524011663006119641482365495865505876313604487704786299806452487627742914384599231357</span>
+e: <span style=color:#ae81ff>65537</span>
+ciphertext: <span style=color:#ae81ff>1794729203976711872719621459271823848321924470715184664270203469128478181195520330265627097566749316733970674954700745748703888444561753122252779237029902195187463631393160343731688479216594917964898577428323838387486364520875261593810828449831816915495141814464541237636674968360665110753052022800008837592</span>
+</code></pre></div><p>共通鍵(n, e)の値と暗号文(ciphertext)が与えられています。
+さらに任意の値を入力するとそれを復号して教えてくれるようです(以下、復号オラクルと呼びます)。
+もちろん、解読目標となるciphertextだけは復号してくれません。</p><h3 id=解説-3>解説</h3><p>今回の問題のように、解読の目標となる暗号文以外の任意の値を、任意のタイミングで復号できるような状態で暗号の解読を試みる攻撃モデルを、適応的選択暗号文攻撃(CCA2: Chosen Ciphertext Attack 2)といいます。
+この問題は、CCA2の下でRSA暗号を解読せよ、と言われていることになります。</p><p>今回求めたいciphertextの復号結果をmとおくことにすると、次式が成り立ちます。
+$$
+c \equiv m^e \ (mod \ n) \tag{4}
+$$
+いきなりですが、与えられた共通鍵(n, e)を用いて、2を暗号化してみます。これをrと置きます。
+$$
+r \equiv 2^e \ (mod \ n) \tag{5}
+$$
+cにrをかけ合わせると、次のようになります。
+$$
+rc \equiv 2^e m^e \equiv (2m)^e \ (mod \ n) \tag{6}
+$$
+ここで、与えられた復号オラクルを使ってrcを復号します。
+もちろん、rcはcとは異なる値をとっているので、復号オラクルで復号できます。
+(6)式より、復号結果は2mとなるはずです。
+仕上げに、法nにおける2の乗法逆元を2mにかければ、mを求めることができます。
+$$
+m \equiv 2^{-1} 2m \ (mod \ n)
+$$
+以下はpythonによる実装です。
+まずは2を暗号化してrを求め、crを出力するプログラムです。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+    n <span style=color:#f92672>=</span> <span style=color:#ae81ff>98779204515760491613252017713866633644034082126200123842168625557656177578130012687912514131281113056903910303216672999399754424804730783066508774102800055805478423203358748210062773809185231795871320759419243720061802838014524011663006119641482365495865505876313604487704786299806452487627742914384599231357</span>
+
+    e <span style=color:#f92672>=</span> <span style=color:#ae81ff>65537</span>
+    c <span style=color:#f92672>=</span> <span style=color:#ae81ff>1794729203976711872719621459271823848321924470715184664270203469128478181195520330265627097566749316733970674954700745748703888444561753122252779237029902195187463631393160343731688479216594917964898577428323838387486364520875261593810828449831816915495141814464541237636674968360665110753052022800008837592</span>
+    r <span style=color:#f92672>=</span> pow(<span style=color:#ae81ff>2</span>, e, n)
+    cr <span style=color:#f92672>=</span> (c <span style=color:#f92672>*</span> r) <span style=color:#f92672>%</span> n
+    <span style=color:#66d9ef>print</span>(cr)
+
+main()
+</code></pre></div><p>出力:</p><pre><code>38813421544463902807387160746592191882226391712461280994989203779950938051212149637014176552066387656684490506543263307752577977438536615918637513639918096032713284556008858850470000334584266127960394862455679131431032567164652889532749356745489578101978000056767621254728192242313283303921746212606615696895
+</code></pre><p>これを復号オラクルに入力します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>Give me ciphertext to decrypt: <span style=color:#ae81ff>38813421544463902807387160746592191882226391712461280994989203779950938051212149637014176552066387656684490506543263307752577977438536615918637513639918096032713284556008858850470000334584266127960394862455679131431032567164652889532749356745489578101978000056767621254728192242313283303921746212606615696895</span>
+Here you go: <span style=color:#ae81ff>580550060391700078946913236734911770139931497702556153513487440893406629034802718534645538074938502890769138695361576199930</span>
+</code></pre></div><p>復号結果は2mとなっているはずです。
+復号結果に2の乗法逆元をかけ、mを求めます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> binascii
+
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>extgcd</span>(a, b):
+    <span style=color:#66d9ef>if</span> b <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+        x <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
+        y <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+        d <span style=color:#f92672>=</span> a
+        <span style=color:#66d9ef>return</span> x, y, d
+    y, x, d <span style=color:#f92672>=</span> extgcd(b, a <span style=color:#f92672>%</span> b)
+    y <span style=color:#f92672>-=</span> a <span style=color:#f92672>//</span> b <span style=color:#f92672>*</span> x
+    <span style=color:#66d9ef>return</span> x, y, d
+
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+    n <span style=color:#f92672>=</span> <span style=color:#ae81ff>98779204515760491613252017713866633644034082126200123842168625557656177578130012687912514131281113056903910303216672999399754424804730783066508774102800055805478423203358748210062773809185231795871320759419243720061802838014524011663006119641482365495865505876313604487704786299806452487627742914384599231357</span>
+    e <span style=color:#f92672>=</span> <span style=color:#ae81ff>65537</span>
+    c <span style=color:#f92672>=</span> <span style=color:#ae81ff>1794729203976711872719621459271823848321924470715184664270203469128478181195520330265627097566749316733970674954700745748703888444561753122252779237029902195187463631393160343731688479216594917964898577428323838387486364520875261593810828449831816915495141814464541237636674968360665110753052022800008837592</span>
+    r <span style=color:#f92672>=</span> pow(<span style=color:#ae81ff>2</span>, e, n)
+    cr <span style=color:#f92672>=</span> (c <span style=color:#f92672>*</span> r) <span style=color:#f92672>%</span> n
+
+    dec_cr <span style=color:#f92672>=</span> <span style=color:#ae81ff>580550060391700078946913236734911770139931497702556153513487440893406629034802718534645538074938502890769138695361576199930</span>
+
+    inv_2, _, _ <span style=color:#f92672>=</span> extgcd(<span style=color:#ae81ff>2</span>, n)
+    m <span style=color:#f92672>=</span> (inv_2 <span style=color:#f92672>*</span> dec_cr) <span style=color:#f92672>%</span> n
+    <span style=color:#66d9ef>print</span>(binascii<span style=color:#f92672>.</span>a2b_hex(hex(m)[<span style=color:#ae81ff>2</span>:]))
+
+
+main()
+</code></pre></div><p>出力:</p><pre><code>b'picoCTF{m4yb3_Th0se_m3s54g3s_4r3_difurrent_3279013}'
+</code></pre><p>暗号アルゴリズムは、平文から暗号文を得る関数だと考えることができます。
+これをfと置くことにします。
+暗号アルゴリズムfが次の性質を満たすとき、その暗号は乗法に対して準同型性を持っているといいます。
+$$
+f(m_{1})f(m_{2}) = f(m_{1}m_{2})
+$$
+日本語で表現するならば、「暗号化の積は、積の暗号化」といったところでしょうか。
+RSA暗号の暗号化においても、この性質が成り立ちます:
+$$
+c_{1} = m_{1}^e \ (mod \ n)
+$$
+$$
+c_{2} = m_{2}^e \ (mod \ n)
+$$
+の時、
+$$
+c_{1}c_{2} = m_{1}^e m_{2}^e \ (mod \ n) = (m_{1}m_{2})^e \ (mod \ n)
+$$
+今回のような方法でmを求めることができるのはRSA暗号が乗法に対して準同型性を持っているからです。</p><h2 id=pixelated>Pixelated</h2><h3 id=問題文-4>問題文</h3><blockquote><p>I have these 2 images, can you make a flag out of them?</p></blockquote><p>問題ページ:
+<a href="https://play.picoctf.org/practice/challenge/100?category=2&originalEvent=34&page=1">https://play.picoctf.org/practice/challenge/100?category=2&originalEvent=34&page=1</a></p><p>次の二つの画像が与えられています。</p><p><img class=img-zoomable src=../scrambled1.png alt=scrambled1.png>
+<img class=img-zoomable src=../scrambled2.png alt=scrambled2.png></p><h3 id=解説-4>解説</h3><p>画像が与えられていますので、視覚暗号の一つなのではないかと考えました。
+二つの画像のサイズが等しいので、足し算など何らかの重ね合わせの処理で意味のある画像が復元できるような気がします。
+そこで、二つの画像を読み込み、ピクセルごとの和をとった画像を出力してみます。
+pythonを使って実装しました。
+画像の読み込みはpillow(PIL)というライブラリが便利でした。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>from</span> PIL <span style=color:#f92672>import</span> Image
+<span style=color:#f92672>import</span> numpy <span style=color:#f92672>as</span> np
+
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+    <span style=color:#75715e># 画像の読み込み</span>
+    img1 <span style=color:#f92672>=</span> Image<span style=color:#f92672>.</span>open(<span style=color:#e6db74>&#39;scrambled1.png&#39;</span>)
+    img2 <span style=color:#f92672>=</span> Image<span style=color:#f92672>.</span>open(<span style=color:#e6db74>&#39;scrambled2.png&#39;</span>)
+
+    <span style=color:#75715e># imgをarrayに変換</span>
+    img1_pixels <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array(img1)
+    img2_pixels <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array(img2)
+
+    <span style=color:#75715e># 画像の和をとる</span>
+    img3_pixels <span style=color:#f92672>=</span> img1_pixels <span style=color:#f92672>+</span> img2_pixels
+
+    <span style=color:#75715e># Imageオブジェクトに戻して保存</span>
+    img3 <span style=color:#f92672>=</span> Image<span style=color:#f92672>.</span>fromarray(img3_pixels)
+    img3<span style=color:#f92672>.</span>save(<span style=color:#e6db74>&#34;scrambled3.png&#34;</span>)
+    
+
+main()
+</code></pre></div><p>出力:</p><p><img class=img-zoomable src=../scrambled3.png alt=scrabled3.png></p><h2 id=終わりに>終わりに</h2><p>以上が自分が解いた問題になります。
+暗号の勉強の成果が少しは出たのかなと思いましたが、まだまだ知識不足ですので精進します。
+また、説明の粒度が問題によってばらつきが出てしまったように思います。
+よりよいwrite upをかけるように努力したいです。</p></div></article></div><aside class="col-12 col-md-3 float-left sidebar"><div class="sidebar-item sidebar-pages"><h3>ページ</h3><ul><li><a href=https://312k.github.io/nekonyaa.github.io/>Home</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/about>About</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/privacypolicy>PrivacyPolicy</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/result>Result</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/index.xml>RSS</a></li></ul></div><div class="sidebar-item sidebar-links"><h3>リンク</h3><ul><li><a href=https://ctftime.org/team/141534 target=_blank><span>CTFTIME</span></a></li><li><a href=https://github.com/312k/nekonyaa.github.io target=_blank><span>GitHub</span></a></li></ul></div><div class="sidebar-item sidebar-tags"><h3>タグ</h3><div><span><a href=https://312k.github.io/nekonyaa.github.io/tags/312k/>312k</a></span>
+<span><a href=https://312k.github.io/nekonyaa.github.io/tags/about/>about</a></span>
+<span><a href=https://312k.github.io/nekonyaa.github.io/tags/crypto/>crypto</a></span>
+<span><a href=https://312k.github.io/nekonyaa.github.io/tags/ctf/>CTF</a></span>
+<span><a href=https://312k.github.io/nekonyaa.github.io/tags/mingw/>Mingw</a></span>
+<span><a href=https://312k.github.io/nekonyaa.github.io/tags/sr/>sR</a></span>
+<span><a href=https://312k.github.io/nekonyaa.github.io/tags/tt6mzn/>tt6mzn</a></span>
+<span><a href=https://312k.github.io/nekonyaa.github.io/tags/visual-studio-code/>Visual Studio Code</a></span>
+<span><a href=https://312k.github.io/nekonyaa.github.io/tags/writeup/>Writeup</a></span></div></div><div class="sidebar-item sidebar-toc"><h3>目次</h3><nav id=TableOfContents><ul><li><a href=#初めに>初めに</a></li><li><a href=#mod-26>Mod 26</a><ul><li><a href=#問題文>問題文</a></li><li><a href=#解説>解説</a></li></ul></li><li><a href=#mind-your-ps-and-qs>Mind your Ps and Qs</a><ul><li><a href=#問題文-1>問題文</a></li><li><a href=#解説-1>解説</a></li></ul></li><li><a href=#dachshund-attacks>Dachshund Attacks</a><ul><li><a href=#問題文-2>問題文</a></li><li><a href=#解説-2>解説</a></li></ul></li><li><a href=#no-padding-no-problem>No Padding, No Problem</a><ul><li><a href=#問題文-3>問題文</a></li><li><a href=#解説-3>解説</a></li></ul></li><li><a href=#pixelated>Pixelated</a><ul><li><a href=#問題文-4>問題文</a></li><li><a href=#解説-4>解説</a></li></ul></li><li><a href=#終わりに>終わりに</a></li></ul></nav></div></aside></div><div class=btn><div class=btn-menu id=btn-menu><i class="iconfont icon-grid-sharp"></i></div><div class=btn-toggle-mode><i class="iconfont icon-contrast-sharp"></i></div><div class=btn-scroll-top><i class="iconfont icon-chevron-up-circle-sharp"></i></div></div><aside class=sidebar-mobile style=display:none><div class=sidebar-wrapper><div class="sidebar-item sidebar-pages"><h3>ページ</h3><ul><li><a href=https://312k.github.io/nekonyaa.github.io/>Home</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/about>About</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/privacypolicy>PrivacyPolicy</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/result>Result</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/index.xml>RSS</a></li></ul></div><div class="sidebar-item sidebar-links"><h3>リンク</h3><ul><li><a href=https://ctftime.org/team/141534 target=_blank><span>CTFTIME</span></a></li><li><a href=https://github.com/312k/nekonyaa.github.io target=_blank><span>GitHub</span></a></li></ul></div><div class="sidebar-item sidebar-tags"><h3>タグ</h3><div><span><a href=https://312k.github.io/nekonyaa.github.io/tags/312k/>312k</a></span>
+<span><a href=https://312k.github.io/nekonyaa.github.io/tags/about/>about</a></span>
+<span><a href=https://312k.github.io/nekonyaa.github.io/tags/crypto/>crypto</a></span>
+<span><a href=https://312k.github.io/nekonyaa.github.io/tags/ctf/>CTF</a></span>
+<span><a href=https://312k.github.io/nekonyaa.github.io/tags/mingw/>Mingw</a></span>
+<span><a href=https://312k.github.io/nekonyaa.github.io/tags/sr/>sR</a></span>
+<span><a href=https://312k.github.io/nekonyaa.github.io/tags/tt6mzn/>tt6mzn</a></span>
+<span><a href=https://312k.github.io/nekonyaa.github.io/tags/visual-studio-code/>Visual Studio Code</a></span>
+<span><a href=https://312k.github.io/nekonyaa.github.io/tags/writeup/>Writeup</a></span></div></div></div></aside></main><footer><div class="container-lg clearfix"><div class="col-12 footer"><span>&copy; 2021
+<a href=https://312k.github.io/nekonyaa.github.io/>nekonyaa</a>
+| <a href=https://github.com/312k/nekonyaa.github.io>Source code</a>
+| Powered by <a href=https://github.com/dsrkafuu/hugo-theme-fuji/ target=_blank>Fuji-v2</a> & <a href=https://gohugo.io/ target=_blank>Hugo</a></span></div></div></footer><script defer src=https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.0/lazysizes.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js></script><script defer src=https://312k.github.io/nekonyaa.github.io/assets/js/fuji.min.js></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css><script defer src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js onload=renderMathInElement(document.body);></script></body></html>
