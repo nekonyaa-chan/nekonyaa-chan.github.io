@@ -1,25 +1,77 @@
-<!doctype html><html lang=ja><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=HandheldFriendly content="True"><meta http-equiv=x-ua-compatible content="IE=edge"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=generator content="Hugo 0.79.1"><link rel=apple-touch-icon sizes=180x180 href=https://312k.github.io/nekonyaa.github.io/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=https://312k.github.io/nekonyaa.github.io/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=https://312k.github.io/nekonyaa.github.io/favicon-16x16.png><link rel=manifest href=https://312k.github.io/nekonyaa.github.io/site.webmanifest><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#ffffff"><title>BrixelCTF-tt6mzn write up - nekonyaa</title><meta name=author content="tt6mzn"><meta name=keywords content="CTF,Writeup,tt6mzn"><meta property="og:title" content="BrixelCTF-tt6mzn write up"><meta name=twitter:title content="BrixelCTF-tt6mzn write up"><meta property="og:type" content="article"><meta property="og:url" content="https://312k.github.io/nekonyaa.github.io/post/post4/brixelctf-tt6mzn/"><meta property="og:description" content="はじめに
+<!doctype html><html lang=ja>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=HandheldFriendly content="True">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=generator content="Hugo 0.91.2">
+<link rel=apple-touch-icon sizes=180x180 href=https://nekonyaa-chan.github.io/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=https://nekonyaa-chan.github.io/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://nekonyaa-chan.github.io/favicon-16x16.png>
+<link rel=manifest href=https://nekonyaa-chan.github.io/site.webmanifest>
+<meta name=msapplication-TileColor content="#da532c">
+<meta name=theme-color content="#ffffff">
+<title>BrixelCTF-tt6mzn write up - nekonyaa</title>
+<meta name=author content="tt6mzn">
+<meta name=keywords content="CTF,Writeup,tt6mzn">
+<meta property="og:title" content="BrixelCTF-tt6mzn write up">
+<meta name=twitter:title content="BrixelCTF-tt6mzn write up">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nekonyaa-chan.github.io/post/post4/brixelctf-tt6mzn/"><meta property="og:description" content="はじめに
 年末から年始にかけてBrixelCTFに参加しました。
 結果はこんな感じ。
 Internet・Programming・Cryptographyを中心に11問を解くことができました。
-チームとしてはスコアが212ポイント、順位が830人中317位でした。"><meta name=twitter:description content="はじめに
+チームとしてはスコアが212ポイント、順位が830人中317位でした。">
+<meta name=twitter:description content="はじめに
 年末から年始にかけてBrixelCTFに参加しました。
 結果はこんな感じ。
 Internet・Programming・Cryptographyを中心に11問を解くことができました。
-チームとしてはスコアが212ポイント、順位が830人中317位でした。"><meta name=twitter:card content="summary"><meta property="article:published_time" content="2021-01-06T16:54:19+09:00"><meta property="article:modified_time" content="2021-01-06T16:54:19+09:00"><style>@media(prefers-color-scheme:dark){body[data-theme=auto] img{filter:brightness(60%)}}body[data-theme=dark] img{filter:brightness(60%)}</style><link rel=stylesheet href=https://312k.github.io/nekonyaa.github.io/assets/css/fuji.min.css><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('js',new Date());gtag('config','UA-186834406-6');</script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-186834406-6"></script></head><body data-theme=auto><script data-cfasync=false>var fujiThemeData=localStorage.getItem('fuji_data-theme');if(!fujiThemeData){localStorage.setItem('fuji_data-theme','auto');}else{if(fujiThemeData!=='auto'){document.body.setAttribute('data-theme',fujiThemeData==='dark'?'dark':'light');}}</script><header><div class="container-lg clearfix"><div class="col-12 header"><a class=title-main href=https://312k.github.io/nekonyaa.github.io/>nekonyaa</a>
-<span class=title-sub>CTFのwrite upなど</span></div></div></header><main><div class="container-lg clearfix"><div class="col-12 col-md-9 float-left content"><article><h2 class="post-item post-title"><a href=https://312k.github.io/nekonyaa.github.io/post/post4/brixelctf-tt6mzn/>BrixelCTF-tt6mzn write up</a></h2><div class="post-item post-meta"><span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-06</span>
-<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=https://312k.github.io/nekonyaa.github.io/tags/ctf>CTF</a>&nbsp;<a href=https://312k.github.io/nekonyaa.github.io/tags/writeup>Writeup</a>&nbsp;<a href=https://312k.github.io/nekonyaa.github.io/tags/tt6mzn>tt6mzn</a>&nbsp;</span></div><div class="post-content markdown-body"><h1 id=はじめに>はじめに</h1><p>年末から年始にかけてBrixelCTFに参加しました。
+チームとしてはスコアが212ポイント、順位が830人中317位でした。"><meta name=twitter:card content="summary"><meta property="article:published_time" content="2021-01-06T16:54:19+09:00"><meta property="article:modified_time" content="2021-01-06T16:54:19+09:00">
+<style>@media(prefers-color-scheme:dark){body[data-theme=auto] img{filter:brightness(60%)}}body[data-theme=dark] img{filter:brightness(60%)}</style>
+<link rel=stylesheet href=https://nekonyaa-chan.github.io/assets/css/fuji.min.css>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-186834406-6')</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-186834406-6"></script>
+</head>
+<body data-theme=auto>
+<script data-cfasync=false>var fujiThemeData=localStorage.getItem('fuji_data-theme');fujiThemeData?fujiThemeData!=='auto'&&document.body.setAttribute('data-theme',fujiThemeData==='dark'?'dark':'light'):localStorage.setItem('fuji_data-theme','auto')</script>
+<header>
+<div class="container-lg clearfix">
+<div class="col-12 header">
+<a class=title-main href=https://nekonyaa-chan.github.io/>nekonyaa</a>
+<span class=title-sub>CTFのwrite upなど</span>
+</div>
+</div>
+</header>
+<main>
+<div class="container-lg clearfix">
+<div class="col-12 col-md-9 float-left content">
+<article>
+<h2 class="post-item post-title">
+<a href=https://nekonyaa-chan.github.io/post/post4/brixelctf-tt6mzn/>BrixelCTF-tt6mzn write up</a>
+</h2>
+<div class="post-item post-meta">
+<span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-06</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=https://nekonyaa-chan.github.io/tags/ctf>CTF</a>&nbsp;<a href=https://nekonyaa-chan.github.io/tags/writeup>Writeup</a>&nbsp;<a href=https://nekonyaa-chan.github.io/tags/tt6mzn>tt6mzn</a>&nbsp;</span>
+</div>
+<div class="post-content markdown-body">
+<h1 id=はじめに>はじめに</h1>
+<p>年末から年始にかけてBrixelCTFに参加しました。
 結果は<a href=https://ctf.brixel.space/users/109 target=_blank>こんな感じ</a>。
 Internet・Programming・Cryptographyを中心に11問を解くことができました。
-チームとしてはスコアが212ポイント、順位が830人中317位でした。</p><h1 id=programming>Programming</h1><h2 id=are-you-fast-enough>Are you fast enough?</h2><p>urlを開くと次のような画面が表示されます。<img class=img-zoomable src=../2021-01-06areyoufastenough.png alt="Are you fast enough?">
+チームとしてはスコアが212ポイント、順位が830人中317位でした。</p>
+<h1 id=programming>Programming</h1>
+<h2 id=are-you-fast-enough>Are you fast enough?</h2>
+<p>urlを開くと次のような画面が表示されます。<img class=img-zoomable src=../2021-01-06areyoufastenough.png alt="Are you fast enough?">
 「毎回変わるランダムな文字列を入力ボックスに入力してenterボタンを押す」までを1秒以内にやれ、とあります。
 もちろん普通に要請にこたえることはできないので、プログラムを書きます。
 <a href=https://www.selenium.dev/documentation/ja/ target=_blank>selenium</a>というフレームワークを使えばこれを実現できます。
 seleniumはブラウザをプログラムで操作するツールです。
 私はchromeとpythonを使って実装しました。
 seleniumのインストールのほかに<a href=http://chromedriver.chromium.org/downloads target=_blank>ChromeDriver</a>をインストールする必要があったのでちょっとめんどくさい。
-書いたコードは以下です。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>from</span> selenium <span style=color:#f92672>import</span> webdriver
+書いたコードは以下です。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>from</span> selenium <span style=color:#f92672>import</span> webdriver
 <span style=color:#f92672>from</span> selenium.webdriver.common.keys <span style=color:#f92672>import</span> Keys
 <span style=color:#f92672>import</span> time
 
@@ -37,8 +89,17 @@ seleniumのインストールのほかに<a href=http://chromedriver.chromium.or
 main()
 </code></pre></div><p>find_element_by_～()という関数で文字列やボタンを取得し、その文字列を取り出したり、ボタンをクリックしたりすることができます。
 実行が終わるとウィンドウが自動で閉じてしまうので、すべての処理が終わったら60秒待機するようにしています。
-実行するとフラグが表示されました。</p><h2 id=keep-walking>Keep walking&mldr;</h2><p>変数X, Y, answerをそれぞれ初期値1に設定し、</p><ol><li>answerの値を X * Y + answer + 3 に更新</li><li>Xをインクリメント</li><li>Yをインクリメント</li></ol><p>という処理をXが525になるまで繰り返した時のanswerの値を求めなさい。という問題です。
-手動でも解けないことはなさそうですがプログラムを書きます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+実行するとフラグが表示されました。</p>
+<h2 id=keep-walking>Keep walking&mldr;</h2>
+<p>変数X, Y, answerをそれぞれ初期値1に設定し、</p>
+<ol>
+<li>answerの値を X * Y + answer + 3 に更新</li>
+<li>Xをインクリメント</li>
+<li>Yをインクリメント</li>
+</ol>
+<p>という処理をXが525になるまで繰り返した時のanswerの値を求めなさい。という問題です。
+手動でも解けないことはなさそうですがプログラムを書きます。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
     x <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
     y <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
     ans <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
@@ -48,14 +109,18 @@ main()
         x <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
         y <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
     
-    <span style=color:#66d9ef>print</span>(ans)
+    print(ans)
 
 main()
-</code></pre></div><p>実行すると<code>48373851</code>と出力されます。これが答えになっています。</p><h2 id=quizbot>Quizbot</h2><p>与えられたurlを開くと、次のような画面が表示されます。<img class=img-zoomable src=../2021-01-06quizbot-1.png alt=quizbot-1>
+</code></pre></div><p>実行すると<code>48373851</code>と出力されます。これが答えになっています。</p>
+<h2 id=quizbot>Quizbot</h2>
+<p>与えられたurlを開くと、次のような画面が表示されます。<img class=img-zoomable src=../2021-01-06quizbot-1.png alt=quizbot-1>
 表示されているようなクイズに1000回正解すればいいようです。試しに適当な文字を入力して<code>answer</code>ボタンを押すとこうなります。<img class=img-zoomable src=../2021-01-06quizbot-2.png alt=quizbot-2>
 scoreは0のままですが、間違えてもそのまま次の問題へ行けるようです。さらに上部には前の問題の答えが表示されています。また、表示されるクイズの順番はいつも同じです。
 以上より、とりあえず最初に1000回間違えて正しい答えを表示・記録し、それを順番に入力しなおしていけばよいと分かります。
-もちろんプログラムを書いてこれを実現します。前述の「Are you fast enough?」でも使用したseleniumをここでも使用します。<br>まずは1000回間違えて答えを記録していくプログラムです。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>from</span> selenium <span style=color:#f92672>import</span> webdriver
+もちろんプログラムを書いてこれを実現します。前述の「Are you fast enough?」でも使用したseleniumをここでも使用します。<br>
+まずは1000回間違えて答えを記録していくプログラムです。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>from</span> selenium <span style=color:#f92672>import</span> webdriver
 <span style=color:#f92672>from</span> selenium.webdriver.common.keys <span style=color:#f92672>import</span> Keys
 
 <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
@@ -73,7 +138,9 @@ scoreは0のままですが、間違えてもそのまま次の問題へ行け�
         f<span style=color:#f92672>.</span>write(<span style=color:#e6db74>&#34;|&#34;</span><span style=color:#f92672>.</span>join(ans))
 
 main()
-</code></pre></div><p><code>ans</code>という配列に答えを記録し、最後に<code>quizbot_ans.txt</code>というテキストファイルに<code>|</code>区切りで答えを出力しています。</p><p>次は記録した答えを入力していくプログラムです。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>from</span> selenium <span style=color:#f92672>import</span> webdriver
+</code></pre></div><p><code>ans</code>という配列に答えを記録し、最後に<code>quizbot_ans.txt</code>というテキストファイルに<code>|</code>区切りで答えを出力しています。</p>
+<p>次は記録した答えを入力していくプログラムです。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>from</span> selenium <span style=color:#f92672>import</span> webdriver
 <span style=color:#f92672>from</span> selenium.webdriver.common.keys <span style=color:#f92672>import</span> Keys
 <span style=color:#f92672>import</span> time
 
@@ -91,14 +158,30 @@ main()
 
 main()
 time<span style=color:#f92672>.</span>sleep(<span style=color:#ae81ff>180</span>)
-</code></pre></div><p>実行に時間はかかりますが、15分ほどでフラグをゲットすることができました。</p><h1 id=old-tech>Old tech</h1><h2 id=punchcard>punchcard</h2><p>パンチカードの画像が与えられ、それを読み解く問題です。パンチカードにもいくつか種類があるようですが、問題のパンチカードは80列であることから、IBMの80欄カードであると推測しました。<a href=https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%B3%E3%83%81%E3%82%AB%E3%83%BC%E3%83%89#IBM%E3%81%AE80%E6%AC%84%E3%82%AB%E3%83%BC%E3%83%89%E3%81%A8%E6%96%87%E5%AD%97%E3%82%B3%E3%83%BC%E3%83%89 target=_blank>wikipedia</a>の対応表から一列ずつ読み取っていくとフラグが得られました。</p><h1 id=cryptography>Cryptography</h1><h2 id=sea-code>Sea code</h2><p>モールス信号を解読する問題です。<code>._ _... _._.</code>のようにモールス信号を入力すると対応するアルファベットを表示してくれる<a href=https://l08084.github.io/morse-code-translate-website/ target=_blank>サイト</a>を活用しつつ、音声ファイルをスローで再生しながら愚直に解読していきました。</p><h2 id=dont-be-salty>Don&rsquo;t be salty</h2><p>パスワードのハッシュ値とソルトという文字列が与えられて、元のパスワードを復元しろ。という問題です。
-ただし前提として、</p><ul><li>ソルトはパスワードの末尾に加えられたこと</li><li>パスワードは5文字で、小文字であること</li></ul><p>が仮定されています。</p><p>ソルトとは、パスワードに付け加えられるランダムな文字列のことです。
+</code></pre></div><p>実行に時間はかかりますが、15分ほどでフラグをゲットすることができました。</p>
+<h1 id=old-tech>Old tech</h1>
+<h2 id=punchcard>punchcard</h2>
+<p>パンチカードの画像が与えられ、それを読み解く問題です。パンチカードにもいくつか種類があるようですが、問題のパンチカードは80列であることから、IBMの80欄カードであると推測しました。<a href=https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%B3%E3%83%81%E3%82%AB%E3%83%BC%E3%83%89#IBM%E3%81%AE80%E6%AC%84%E3%82%AB%E3%83%BC%E3%83%89%E3%81%A8%E6%96%87%E5%AD%97%E3%82%B3%E3%83%BC%E3%83%89 target=_blank>wikipedia</a>の対応表から一列ずつ読み取っていくとフラグが得られました。</p>
+<h1 id=cryptography>Cryptography</h1>
+<h2 id=sea-code>Sea code</h2>
+<p>モールス信号を解読する問題です。<code>._ _... _._.</code>のようにモールス信号を入力すると対応するアルファベットを表示してくれる<a href=https://l08084.github.io/morse-code-translate-website/ target=_blank>サイト</a>を活用しつつ、音声ファイルをスローで再生しながら愚直に解読していきました。</p>
+<h2 id=dont-be-salty>Don&rsquo;t be salty</h2>
+<p>パスワードのハッシュ値とソルトという文字列が与えられて、元のパスワードを復元しろ。という問題です。
+ただし前提として、</p>
+<ul>
+<li>ソルトはパスワードの末尾に加えられたこと</li>
+<li>パスワードは5文字で、小文字であること</li>
+</ul>
+<p>が仮定されています。</p>
+<p>ソルトとは、パスワードに付け加えられるランダムな文字列のことです。
 ソルトを付け加えてからハッシュ関数にかけることで、レインボーテーブルなどを用いた事前計算による攻撃を防ぐことができます。
 したがって通常ソルトを使ってハッシュされた値から平文を求めることは困難です。
 しかし今回は、パスワードの長さが5文字であることが事前にわかっています。
 この時点でパスワードの候補は<code>aaaaa</code>, <code>aaaab</code>,&mldr;, <code>zzzzz</code>までの　26^5 = 11881376通りと大体10^7通りです。
 この程度であれば総当たりで元のパスワードを求めることができます。
-ハッシュ値が32文字であることから、ハッシュ暗号はmd5と推測できます。</p><p>以上をまとめてプログラムを書きます。書いたプログラムは以下です。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> hashlib
+ハッシュ値が32文字であることから、ハッシュ暗号はmd5と推測できます。</p>
+<p>以上をまとめてプログラムを書きます。書いたプログラムは以下です。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> hashlib
 
 <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
     passwordhash <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;2bafea54caf6f8d718be0f234793a9be&#39;</span>
@@ -112,55 +195,242 @@ time<span style=color:#f92672>.</span>sleep(<span style=color:#ae81ff>180</span>
                         s <span style=color:#f92672>=</span> i <span style=color:#f92672>+</span> j <span style=color:#f92672>+</span> k <span style=color:#f92672>+</span> l <span style=color:#f92672>+</span> m <span style=color:#f92672>+</span> salt
                         hs <span style=color:#f92672>=</span> hashlib<span style=color:#f92672>.</span>md5(s<span style=color:#f92672>.</span>encode())<span style=color:#f92672>.</span>hexdigest()
                         <span style=color:#66d9ef>if</span> hs <span style=color:#f92672>==</span> passwordhash:
-                            <span style=color:#66d9ef>print</span>(s)
+                            print(s)
                             exit()
 
 main()
 </code></pre></div><p>なかなか仰々しい見た目をしていますが、一番明示的かなと個人的には思っています(言い訳)。
-パスワードの長さが常に5文字なので、5重ループのごり押しをしていますが、もっと文字数の多いパスワードであれば再帰関数を使って実装するとよいでしょう(保険)。</p><p>ライブラリとしてhashlibを使っていますが、これは標準ライブラリです。メジャーなハッシュ関数を簡単に使うことができます。
-総当たりで生成した文字列の末尾にソルトを付け加えた文字列をmd5でハッシュし、与えられたハッシュ値と一致するかを調べています。</p><p>実行すると<code>brute04532@#!!</code>と表示されます。これから末尾のソルトを除いた文字列が答えです。</p><h1 id=internet>Internet</h1><h2 id=readme>Readme</h2><p><a href=https://ctf.brixel.space/guide target=_blank>brixelCTFのGuide</a>の下部参照です。
-<a href=https://ctftime.org/user/97775 target=_blank>312k</a>の助言で解きました(申し訳なさがあったりなかったり&mldr;)。</p><h2 id=login2>login2</h2><p>与えられたurlを開くと、ログインフォームっぽい画面が表示されます。
+パスワードの長さが常に5文字なので、5重ループのごり押しをしていますが、もっと文字数の多いパスワードであれば再帰関数を使って実装するとよいでしょう(保険)。</p>
+<p>ライブラリとしてhashlibを使っていますが、これは標準ライブラリです。メジャーなハッシュ関数を簡単に使うことができます。
+総当たりで生成した文字列の末尾にソルトを付け加えた文字列をmd5でハッシュし、与えられたハッシュ値と一致するかを調べています。</p>
+<p>実行すると<code>brute04532@#!!</code>と表示されます。これから末尾のソルトを除いた文字列が答えです。</p>
+<h1 id=internet>Internet</h1>
+<h2 id=readme>Readme</h2>
+<p><a href=https://ctf.brixel.space/guide target=_blank>brixelCTFのGuide</a>の下部参照です。
+<a href=https://ctftime.org/user/97775 target=_blank>312k</a>の助言で解きました(申し訳なさがあったりなかったり&mldr;)。</p>
+<h2 id=login2>login2</h2>
+<p>与えられたurlを開くと、ログインフォームっぽい画面が表示されます。
 開発者モードでソースを見ると、やや難読化されたjavascriptが見れます。
 どうやらソースに書かれた文字列と入力された文字列を6文字ずつ区切って比較し、一致しているか判定しているようです。
 すべてのif文をtrueにする文字列を復元するとフラグを得ることができます。
-ちなみに何度か登場している<code>.substring(a, b)</code>のようなメソッドは、a文字目からb文字目まで(b文字目は含まない)の連続した部分文字列を取り出す機能があります。</p><h2 id=login3>login3</h2><p>login2の問題と同じように、入力されたパスワードの文字列をif文で比較していますが、今度は直接文字列と比較せず、password.txtというファイルの中身と比較しているようです。
+ちなみに何度か登場している<code>.substring(a, b)</code>のようなメソッドは、a文字目からb文字目まで(b文字目は含まない)の連続した部分文字列を取り出す機能があります。</p>
+<h2 id=login3>login3</h2>
+<p>login2の問題と同じように、入力されたパスワードの文字列をif文で比較していますが、今度は直接文字列と比較せず、password.txtというファイルの中身と比較しているようです。
 password.txtの中身は問題のurlの末尾の<code>/index.html</code>を<code>/password.txt</code>と変えることで簡単に見ることができました。
-password.txtの中身がフラグになっています。</p><h2 id=login4>login4</h2><p>login3の問題と同じように、入力されたパスワードの文字列をpassword.txtの中身と比較していますが、今度は読み込んだpassword.txtを<code>atob()</code>という関数に入れてから比較を行っています。
+password.txtの中身がフラグになっています。</p>
+<h2 id=login4>login4</h2>
+<p>login3の問題と同じように、入力されたパスワードの文字列をpassword.txtの中身と比較していますが、今度は読み込んだpassword.txtを<code>atob()</code>という関数に入れてから比較を行っています。
 調べてみると<code>atob()</code>には、Base64でエンコードされた文字列をデコードする機能があるようです。
 login3と同じ要領でpassword.txtをのぞくと、Base64でエンコードされたと思われる末尾が<code>=</code>の文字列が入っています。
 この文字列をBase64デコードすると、フラグを得ることができます。
-<a href=https://ctftime.org/user/97775 target=_blank>312k</a>によれば、入力した文字列をBase64デコードしてくれる<a href=https://tool-taro.com/base64_decode/ target=_blank>サイト</a>もあるようです。</p><p>私はプログラムを書きました。pythonの標準ライブラリでbase64を扱えます。
-コードは以下です。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> base64
+<a href=https://ctftime.org/user/97775 target=_blank>312k</a>によれば、入力した文字列をBase64デコードしてくれる<a href=https://tool-taro.com/base64_decode/ target=_blank>サイト</a>もあるようです。</p>
+<p>私はプログラムを書きました。pythonの標準ライブラリでbase64を扱えます。
+コードは以下です。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> base64
 
 <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
     username <span style=color:#f92672>=</span> <span style=color:#e6db74>b</span><span style=color:#e6db74>&#39;YWRtaW4=&#39;</span>
-    <span style=color:#66d9ef>print</span>(base64<span style=color:#f92672>.</span>b64decode(username)<span style=color:#f92672>.</span>decode())
+    print(base64<span style=color:#f92672>.</span>b64decode(username)<span style=color:#f92672>.</span>decode())
     password <span style=color:#f92672>=</span> <span style=color:#e6db74>b</span><span style=color:#e6db74>&#39;YnJpeGVsQ1RGe2V2ZW5fYmFzZTY0X3dvbnRfbWFrZV95b3Vfc2VjdXJlfQ==&#39;</span>
-    <span style=color:#66d9ef>print</span>(base64<span style=color:#f92672>.</span>b64decode(password)<span style=color:#f92672>.</span>decode())
+    print(base64<span style=color:#f92672>.</span>b64decode(password)<span style=color:#f92672>.</span>decode())
 
 main()
-</code></pre></div><p>実行するとフラグが表示されます。</p><h2 id=snackshack-awards>SnackShack awards</h2><p>店の人気投票が行われているサイトで不正な投票をして、負けている店に5000票加えろ。という問題です。
+</code></pre></div><p>実行するとフラグが表示されます。</p>
+<h2 id=snackshack-awards>SnackShack awards</h2>
+<p>店の人気投票が行われているサイトで不正な投票をして、負けている店に5000票加えろ。という問題です。
 urlを開くと各店の画像や説明とともに、投票のためのボタンが用意されています。
-最大でも5票しか投票できない仕様です。</p><p>結論としては、5000票入れられるようにhtmlファイルを書き換えます。
+最大でも5票しか投票できない仕様です。</p>
+<p>結論としては、5000票入れられるようにhtmlファイルを書き換えます。
 与えられたurlからページのhtmlファイルをダウンロードするなりして、投票のために与えるポイントを選ぶ部分(selectタグ)に記述された数字を5000に書き換えます。
-あとは書き換えたファイルを実行して、目的の店に投票するだけです。</p><h1 id=おわりに>おわりに</h1><p>CTFへの挑戦はほぼ初めてでしたが、かなり楽しめました。CTFたのしい。
-解けた問題のジャンルに偏りがあったので、様々な問題に対応できるように勉強していきたいです。</p></div></article></div><aside class="col-12 col-md-3 float-left sidebar"><div class="sidebar-item sidebar-pages"><h3>ページ</h3><ul><li><a href=https://312k.github.io/nekonyaa.github.io/>Home</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/about>About</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/privacypolicy>PrivacyPolicy</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/result>Result</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/index.xml>RSS</a></li></ul></div><div class="sidebar-item sidebar-links"><h3>リンク</h3><ul><li><a href=https://ctftime.org/team/141534 target=_blank><span>CTFTIME</span></a></li><li><a href=https://github.com/312k/nekonyaa.github.io target=_blank><span>GitHub</span></a></li></ul></div><div class="sidebar-item sidebar-tags"><h3>タグ</h3><div><span><a href=https://312k.github.io/nekonyaa.github.io/tags/312k/>312k</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/about/>about</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/crypto/>crypto</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/ctf/>CTF</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/mingw/>Mingw</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/sr/>sR</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/tt6mzn/>tt6mzn</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/visual-studio-code/>Visual Studio Code</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/writeup/>Writeup</a></span></div></div><div class="sidebar-item sidebar-toc"><h3>目次</h3><nav id=TableOfContents><ul><li><a href=#are-you-fast-enough>Are you fast enough?</a></li><li><a href=#keep-walking>Keep walking&mldr;</a></li><li><a href=#quizbot>Quizbot</a></li></ul><ul><li><a href=#punchcard>punchcard</a></li></ul><ul><li><a href=#sea-code>Sea code</a></li><li><a href=#dont-be-salty>Don&rsquo;t be salty</a></li></ul><ul><li><a href=#readme>Readme</a></li><li><a href=#login2>login2</a></li><li><a href=#login3>login3</a></li><li><a href=#login4>login4</a></li><li><a href=#snackshack-awards>SnackShack awards</a></li></ul></nav></div></aside></div><div class=btn><div class=btn-menu id=btn-menu><i class="iconfont icon-grid-sharp"></i></div><div class=btn-toggle-mode><i class="iconfont icon-contrast-sharp"></i></div><div class=btn-scroll-top><i class="iconfont icon-chevron-up-circle-sharp"></i></div></div><aside class=sidebar-mobile style=display:none><div class=sidebar-wrapper><div class="sidebar-item sidebar-pages"><h3>ページ</h3><ul><li><a href=https://312k.github.io/nekonyaa.github.io/>Home</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/about>About</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/privacypolicy>PrivacyPolicy</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/result>Result</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/index.xml>RSS</a></li></ul></div><div class="sidebar-item sidebar-links"><h3>リンク</h3><ul><li><a href=https://ctftime.org/team/141534 target=_blank><span>CTFTIME</span></a></li><li><a href=https://github.com/312k/nekonyaa.github.io target=_blank><span>GitHub</span></a></li></ul></div><div class="sidebar-item sidebar-tags"><h3>タグ</h3><div><span><a href=https://312k.github.io/nekonyaa.github.io/tags/312k/>312k</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/about/>about</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/crypto/>crypto</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/ctf/>CTF</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/mingw/>Mingw</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/sr/>sR</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/tt6mzn/>tt6mzn</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/visual-studio-code/>Visual Studio Code</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/writeup/>Writeup</a></span></div></div></div></aside></main><footer><div class="container-lg clearfix"><div class="col-12 footer"><span>&copy; 2021
-<a href=https://312k.github.io/nekonyaa.github.io/>nekonyaa</a>
-| <a href=https://github.com/312k/nekonyaa.github.io>Source code</a>
-| Powered by <a href=https://github.com/dsrkafuu/hugo-theme-fuji/ target=_blank>Fuji-v2</a> & <a href=https://gohugo.io/ target=_blank>Hugo</a></span></div></div></footer><script defer src=https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.0/lazysizes.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js></script><script defer src=https://312k.github.io/nekonyaa.github.io/assets/js/fuji.min.js></script></body></html>
+あとは書き換えたファイルを実行して、目的の店に投票するだけです。</p>
+<h1 id=おわりに>おわりに</h1>
+<p>CTFへの挑戦はほぼ初めてでしたが、かなり楽しめました。CTFたのしい。
+解けた問題のジャンルに偏りがあったので、様々な問題に対応できるように勉強していきたいです。</p>
+</div>
+</article>
+</div>
+<aside class="col-12 col-md-3 float-left sidebar">
+<div class="sidebar-item sidebar-pages">
+<h3>ページ</h3>
+<ul>
+<li>
+<a href=https://nekonyaa-chan.github.io/>Home</a>
+</li>
+<li>
+<a href=https://nekonyaa-chan.github.io/about>About</a>
+</li>
+<li>
+<a href=https://nekonyaa-chan.github.io/privacypolicy>PrivacyPolicy</a>
+</li>
+<li>
+<a href=https://nekonyaa-chan.github.io/result>Result</a>
+</li>
+<li>
+<a href=https://nekonyaa-chan.github.io/index.xml>RSS</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-links">
+<h3>リンク</h3>
+<ul>
+<li>
+<a href=https://ctftime.org/team/141534 target=_blank><span>CTFTIME</span></a>
+</li>
+<li>
+<a href=https://nekonyaa-chan.github.io target=_blank><span>GitHub</span></a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-tags">
+<h3>タグ</h3>
+<div>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/312k/>312k</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/about/>about</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/crypto/>crypto</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/ctf/>CTF</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/mingw/>Mingw</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/sr/>sR</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/tt6mzn/>tt6mzn</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/visual-studio-code/>Visual Studio Code</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/writeup/>Writeup</a>
+</span>
+</div>
+</div>
+<div class="sidebar-item sidebar-toc">
+<h3>目次</h3><nav id=TableOfContents>
+<ul>
+<li><a href=#are-you-fast-enough>Are you fast enough?</a></li>
+<li><a href=#keep-walking>Keep walking&mldr;</a></li>
+<li><a href=#quizbot>Quizbot</a></li>
+</ul>
+<ul>
+<li><a href=#punchcard>punchcard</a></li>
+</ul>
+<ul>
+<li><a href=#sea-code>Sea code</a></li>
+<li><a href=#dont-be-salty>Don&rsquo;t be salty</a></li>
+</ul>
+<ul>
+<li><a href=#readme>Readme</a></li>
+<li><a href=#login2>login2</a></li>
+<li><a href=#login3>login3</a></li>
+<li><a href=#login4>login4</a></li>
+<li><a href=#snackshack-awards>SnackShack awards</a></li>
+</ul>
+</nav></div>
+</aside>
+</div>
+<div class=btn>
+<div class=btn-menu id=btn-menu>
+<i class="iconfont icon-grid-sharp"></i>
+</div>
+<div class=btn-toggle-mode>
+<i class="iconfont icon-contrast-sharp"></i>
+</div>
+<div class=btn-scroll-top>
+<i class="iconfont icon-chevron-up-circle-sharp"></i>
+</div>
+</div>
+<aside class=sidebar-mobile style=display:none>
+<div class=sidebar-wrapper>
+<div class="sidebar-item sidebar-pages">
+<h3>ページ</h3>
+<ul>
+<li>
+<a href=https://nekonyaa-chan.github.io/>Home</a>
+</li>
+<li>
+<a href=https://nekonyaa-chan.github.io/about>About</a>
+</li>
+<li>
+<a href=https://nekonyaa-chan.github.io/privacypolicy>PrivacyPolicy</a>
+</li>
+<li>
+<a href=https://nekonyaa-chan.github.io/result>Result</a>
+</li>
+<li>
+<a href=https://nekonyaa-chan.github.io/index.xml>RSS</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-links">
+<h3>リンク</h3>
+<ul>
+<li>
+<a href=https://ctftime.org/team/141534 target=_blank><span>CTFTIME</span></a>
+</li>
+<li>
+<a href=https://nekonyaa-chan.github.io target=_blank><span>GitHub</span></a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-tags">
+<h3>タグ</h3>
+<div>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/312k/>312k</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/about/>about</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/crypto/>crypto</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/ctf/>CTF</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/mingw/>Mingw</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/sr/>sR</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/tt6mzn/>tt6mzn</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/visual-studio-code/>Visual Studio Code</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/writeup/>Writeup</a>
+</span>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<footer>
+<div class="container-lg clearfix">
+<div class="col-12 footer">
+<span>&copy; 2022
+<a href=https://nekonyaa-chan.github.io/>nekonyaa</a>
+| <a href=https://nekonyaa-chan.github.io>Source code</a>
+| Powered by <a href=https://github.com/dsrkafuu/hugo-theme-fuji/ target=_blank>Fuji-v2</a> & <a href=https://gohugo.io/ target=_blank>Hugo</a>
+</span>
+</div>
+</div>
+</footer>
+<script defer src=https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.0/lazysizes.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js></script>
+<script defer src=https://nekonyaa-chan.github.io/assets/js/fuji.min.js></script>
+</body>
+</html>

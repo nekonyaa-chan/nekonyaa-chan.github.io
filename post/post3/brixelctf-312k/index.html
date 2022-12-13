@@ -1,45 +1,326 @@
-<!doctype html><html lang=ja><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=HandheldFriendly content="True"><meta http-equiv=x-ua-compatible content="IE=edge"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=generator content="Hugo 0.79.1"><link rel=apple-touch-icon sizes=180x180 href=https://312k.github.io/nekonyaa.github.io/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=https://312k.github.io/nekonyaa.github.io/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=https://312k.github.io/nekonyaa.github.io/favicon-16x16.png><link rel=manifest href=https://312k.github.io/nekonyaa.github.io/site.webmanifest><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#ffffff"><title>BrixelCTF-312k write up - nekonyaa</title><meta name=author content="312k"><meta name=keywords content="CTF,Writeup,312k"><meta property="og:title" content="BrixelCTF-312k write up"><meta name=twitter:title content="BrixelCTF-312k write up"><meta property="og:type" content="article"><meta property="og:url" content="https://312k.github.io/nekonyaa.github.io/post/post3/brixelctf-312k/"><meta property="og:description" content="はじめに
+<!doctype html><html lang=ja>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=HandheldFriendly content="True">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=generator content="Hugo 0.91.2">
+<link rel=apple-touch-icon sizes=180x180 href=https://nekonyaa-chan.github.io/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=https://nekonyaa-chan.github.io/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://nekonyaa-chan.github.io/favicon-16x16.png>
+<link rel=manifest href=https://nekonyaa-chan.github.io/site.webmanifest>
+<meta name=msapplication-TileColor content="#da532c">
+<meta name=theme-color content="#ffffff">
+<title>BrixelCTF-312k write up - nekonyaa</title>
+<meta name=author content="312k">
+<meta name=keywords content="CTF,Writeup,312k">
+<meta property="og:title" content="BrixelCTF-312k write up">
+<meta name=twitter:title content="BrixelCTF-312k write up">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nekonyaa-chan.github.io/post/post3/brixelctf-312k/"><meta property="og:description" content="はじめに
 年末から年始にかけてBrixelCTFに参加しました。
 解いた問題は16問で獲得スコアが212ポイント、順位は830人中317位でした。
-初めてwrite upを書いてみます。"><meta name=twitter:description content="はじめに
+初めてwrite upを書いてみます。">
+<meta name=twitter:description content="はじめに
 年末から年始にかけてBrixelCTFに参加しました。
 解いた問題は16問で獲得スコアが212ポイント、順位は830人中317位でした。
-初めてwrite upを書いてみます。"><meta name=twitter:card content="summary"><meta property="article:published_time" content="2021-01-02T15:14:39+09:00"><meta property="article:modified_time" content="2021-01-02T15:14:39+09:00"><style>@media(prefers-color-scheme:dark){body[data-theme=auto] img{filter:brightness(60%)}}body[data-theme=dark] img{filter:brightness(60%)}</style><link rel=stylesheet href=https://312k.github.io/nekonyaa.github.io/assets/css/fuji.min.css><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('js',new Date());gtag('config','UA-186834406-6');</script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-186834406-6"></script></head><body data-theme=auto><script data-cfasync=false>var fujiThemeData=localStorage.getItem('fuji_data-theme');if(!fujiThemeData){localStorage.setItem('fuji_data-theme','auto');}else{if(fujiThemeData!=='auto'){document.body.setAttribute('data-theme',fujiThemeData==='dark'?'dark':'light');}}</script><header><div class="container-lg clearfix"><div class="col-12 header"><a class=title-main href=https://312k.github.io/nekonyaa.github.io/>nekonyaa</a>
-<span class=title-sub>CTFのwrite upなど</span></div></div></header><main><div class="container-lg clearfix"><div class="col-12 col-md-9 float-left content"><article><h2 class="post-item post-title"><a href=https://312k.github.io/nekonyaa.github.io/post/post3/brixelctf-312k/>BrixelCTF-312k write up</a></h2><div class="post-item post-meta"><span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-02</span>
-<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=https://312k.github.io/nekonyaa.github.io/tags/ctf>CTF</a>&nbsp;<a href=https://312k.github.io/nekonyaa.github.io/tags/writeup>Writeup</a>&nbsp;<a href=https://312k.github.io/nekonyaa.github.io/tags/312k>312k</a>&nbsp;</span></div><div class="post-content markdown-body"><h1 id=はじめに>はじめに</h1><p>年末から年始にかけてBrixelCTFに参加しました。
+初めてwrite upを書いてみます。"><meta name=twitter:card content="summary"><meta property="article:published_time" content="2021-01-02T15:14:39+09:00"><meta property="article:modified_time" content="2021-01-02T15:14:39+09:00">
+<style>@media(prefers-color-scheme:dark){body[data-theme=auto] img{filter:brightness(60%)}}body[data-theme=dark] img{filter:brightness(60%)}</style>
+<link rel=stylesheet href=https://nekonyaa-chan.github.io/assets/css/fuji.min.css>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-186834406-6')</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-186834406-6"></script>
+</head>
+<body data-theme=auto>
+<script data-cfasync=false>var fujiThemeData=localStorage.getItem('fuji_data-theme');fujiThemeData?fujiThemeData!=='auto'&&document.body.setAttribute('data-theme',fujiThemeData==='dark'?'dark':'light'):localStorage.setItem('fuji_data-theme','auto')</script>
+<header>
+<div class="container-lg clearfix">
+<div class="col-12 header">
+<a class=title-main href=https://nekonyaa-chan.github.io/>nekonyaa</a>
+<span class=title-sub>CTFのwrite upなど</span>
+</div>
+</div>
+</header>
+<main>
+<div class="container-lg clearfix">
+<div class="col-12 col-md-9 float-left content">
+<article>
+<h2 class="post-item post-title">
+<a href=https://nekonyaa-chan.github.io/post/post3/brixelctf-312k/>BrixelCTF-312k write up</a>
+</h2>
+<div class="post-item post-meta">
+<span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-02</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=https://nekonyaa-chan.github.io/tags/ctf>CTF</a>&nbsp;<a href=https://nekonyaa-chan.github.io/tags/writeup>Writeup</a>&nbsp;<a href=https://nekonyaa-chan.github.io/tags/312k>312k</a>&nbsp;</span>
+</div>
+<div class="post-content markdown-body">
+<h1 id=はじめに>はじめに</h1>
+<p>年末から年始にかけてBrixelCTFに参加しました。
 <a href=https://ctf.brixel.space/users/104 target=_blank>解いた問題</a>は16問で獲得スコアが212ポイント、順位は830人中317位でした。
-初めてwrite upを書いてみます。</p><h2 id=osint>OSINT</h2><h3 id=a-quick-search>A quick search</h3><p>この問題は画像からなんという名前のタワーなのか調べる問題です。<a href="https://www.google.co.jp/imghp?hl=ja" target=_blank>Google画像検索</a>で写真のタワーを検索しましたところ、<a href=https://en.wikipedia.org/wiki/Eben-Ezer_Tower target=_blank>Eben_Ezer</a>がFlagでした。</p><h2 id=reverse-engineering--cracking>Reverse engineering / cracking</h2><h3 id=cookieee>Cookieee!</h3><p>この問題はいわゆる<a href=https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC%E3%82%AF%E3%83%AA%E3%83%83%E3%82%AB%E3%83%BC target=_blank>クッキークリッカー</a>で10,000,000(一千万回)のクリックでFlagが表示されます。ですのでうさみみハリケーンを使ってメモリの書き換えをしました。
+初めてwrite upを書いてみます。</p>
+<h2 id=osint>OSINT</h2>
+<h3 id=a-quick-search>A quick search</h3>
+<p>この問題は画像からなんという名前のタワーなのか調べる問題です。<a href="https://www.google.co.jp/imghp?hl=ja" target=_blank>Google画像検索</a>で写真のタワーを検索しましたところ、<a href=https://en.wikipedia.org/wiki/Eben-Ezer_Tower target=_blank>Eben_Ezer</a>がFlagでした。</p>
+<h2 id=reverse-engineering--cracking>Reverse engineering / cracking</h2>
+<h3 id=cookieee>Cookieee!</h3>
+<p>この問題はいわゆる<a href=https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC%E3%82%AF%E3%83%AA%E3%83%83%E3%82%AB%E3%83%BC target=_blank>クッキークリッカー</a>で10,000,000(一千万回)のクリックでFlagが表示されます。ですのでうさみみハリケーンを使ってメモリの書き換えをしました。
 <a href=https://www.vector.co.jp/soft/win95/prog/se375830.html target=_blank>Vector</a>からうさみみハリケーンをダウンロードし、問題のファイルを実行し、UsaMimi64を起動して、リスト更新で問題ファイルを選択します。<img class=img-zoomable src=../2021-01-02%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%e3%81%ae%e9%81%b8%e6%8a%9e.png alt=うさ耳ハリケーンの選択>
 そしてAlt+Fで範囲検索を起動します。確保・記録して0を通常検索実行します。なぜ0なのかというと現在のClicks回数が0であるということはメモリのどこかに保存されているからです。<img class=img-zoomable src=../2021-01-02%e3%83%a1%e3%83%a2%e3%83%aa%e3%81%ae%e4%b8%ad0%e3%82%92%e6%a4%9c%e7%b4%a2.png alt=メモリの中0を検索>
 残り一つになるまで値を増やします。写真では13個クッキーをクリックしました。<img class=img-zoomable src=../2021-01-02%e9%80%9a%e5%b8%b8%e6%a4%9c%e7%b4%a2%e5%ae%9f%e8%a1%8c%e3%81%8b%e3%82%89%e7%99%ba%e8%a6%8b.png alt=通常検索実行から発見>
-するとアドレスが選択されるので適当に値を設定して、Flagが発見されました。<img class=img-zoomable src=../2021-01-02cookieflagget.png alt=cookieflagget></p><h3 id=no-peeking>no peeking!</h3><p>この問題は<a href=https://ja.wikipedia.org/wiki/.NET_Framework target=_blank>.NET Framework</a>で作られた問題からFlagを探す問題です。デコンパイラが<a href="https://www.microsoft.com/ja-jp/p/ilspy/9mxfbkfvsq13?activetab=pivot:overviewtab" target=_blank>Microsoft ストア</a>であります。問題のファイルを開きその中のshowFlag():objectに答えが隠されていました。<img class=img-zoomable src=../2021-01-02ILSpy.png alt=ILSpy></p><h2 id=old-tech>Old tech</h2><h3 id=goodbye-old-friend>Goodbye old friend</h3><p>2020年度いっぱいで<a href=https://www.adobe.com/jp/products/flashplayer/end-of-life.html target=_blank>サポートが終了した</a>Flashplayerの問題です。
+するとアドレスが選択されるので適当に値を設定して、Flagが発見されました。<img class=img-zoomable src=../2021-01-02cookieflagget.png alt=cookieflagget>
+</p>
+<h3 id=no-peeking>no peeking!</h3>
+<p>この問題は<a href=https://ja.wikipedia.org/wiki/.NET_Framework target=_blank>.NET Framework</a>で作られた問題からFlagを探す問題です。デコンパイラが<a href="https://www.microsoft.com/ja-jp/p/ilspy/9mxfbkfvsq13?activetab=pivot:overviewtab" target=_blank>Microsoft ストア</a>であります。問題のファイルを開きその中のshowFlag():objectに答えが隠されていました。<img class=img-zoomable src=../2021-01-02ILSpy.png alt=ILSpy>
+</p>
+<h2 id=old-tech>Old tech</h2>
+<h3 id=goodbye-old-friend>Goodbye old friend</h3>
+<p>2020年度いっぱいで<a href=https://www.adobe.com/jp/products/flashplayer/end-of-life.html target=_blank>サポートが終了した</a>Flashplayerの問題です。
 ファイルを実行するとGoodbye old friendがずっと往復しています。
 <a href=https://forest.watch.impress.co.jp/library/software/hugflash/ target=_blank>窓の杜</a>からFlashplayerを展開するツールを使います。
-実行してドラックアンドドロップで展開されるのでhugflashディレクトリにgoodbyeフォルダが作成されます。その中のgoodbye.logにFlagが隠されていました。<img class=img-zoomable src=../2021-01-02hugflash.png alt=hugflash></p><h2 id=cryptography>Cryptography</h2><h3 id=flawed>flawed</h3><p>この問題はパスワードハッシュからパスワードを求める問題です。<strong>32文字</strong>のmd5でハッシュされているようなのです。そのためググりハッシュリストを保存しているサイトを使います。よって答えはnotsecureとなりました。</p><h3 id=shit実際の問題タイトルとは異なります>shit(実際の問題タイトルとは異なります)</h3><p>この問題は合字を使った問題です。ニコニコ大百科で「たすけて」と調べると分解された内容が出てきます。ブラウザによって異なるため今回は実際には合字は使いません。
-この問題は<a href=https://ctftime.org/team/141534 target=_blank>tt6-mzn</a>のアドバイスによってわかりました。末尾に=があることからBase64でエンコードされたものと考えました。<a href=https://tool-taro.com/base64_decode/ target=_blank>Base64デコード</a>サイトでデコードするとバイナリが出てきます。<a href=https://rakko.tools/tools/75/ target=_blank>バイナリをテキストに変換するサイト</a>それにバイナリからテキスト変換するとFlagが出てきます。</p><h2 id=internet>Internet</h2><h3 id=hidden-code>Hidden Code</h3><p>この問題はかの有名のコナミコマンドをすると答えが出てきます</p><h3 id=robotopia>robotopia</h3><p>この問題は検索エンジンのクローラーの気分になってとく問題です。たいていのサイトにはrobots.txtがあります。よって問題のサイトのURLに/robots.txtを追加して答えが現れます。</p><h3 id=discord>Discord</h3><p>この問題のFlagはDiscordの今回のCTFのチャンネル内にありました。</p><h3 id=login1>login1</h3><p>この問題はパスワード自体がFlagという問題です。Ctrl+Shift+Iで開発者ツールを開き要素を確認するとjavascriptでパスワードと比較している部分があります。よってif文の条件がFlagです。</p><h3 id=browsercheck>Browsercheck</h3><p>この問題はクローラーのユーザーエージェントと比べているようです。よって開発者ツールでユーザーエージェントを偽装すると正解です。</p><h3 id=flat-earth>Flat earth</h3><p>この問題はまず問題の管理者がログインするところを探すところから始まります。てきとうにマウスを動かすか開発者ツールの要素からログインする画面に移ります。
-そして管理者ログインをします。この問題は<a href=https://www.ipa.go.jp/security/vuln/websecurity.html target=_blank>SQLインジェクション</a>を用いる問題です。ユーザー名に</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#e6db74>&#39; OR 1=1--
+実行してドラックアンドドロップで展開されるのでhugflashディレクトリにgoodbyeフォルダが作成されます。その中のgoodbye.logにFlagが隠されていました。<img class=img-zoomable src=../2021-01-02hugflash.png alt=hugflash>
+</p>
+<h2 id=cryptography>Cryptography</h2>
+<h3 id=flawed>flawed</h3>
+<p>この問題はパスワードハッシュからパスワードを求める問題です。<strong>32文字</strong>のmd5でハッシュされているようなのです。そのためググりハッシュリストを保存しているサイトを使います。よって答えはnotsecureとなりました。</p>
+<h3 id=shit実際の問題タイトルとは異なります>shit(実際の問題タイトルとは異なります)</h3>
+<p>この問題は合字を使った問題です。ニコニコ大百科で「たすけて」と調べると分解された内容が出てきます。ブラウザによって異なるため今回は実際には合字は使いません。
+この問題は<a href=https://ctftime.org/team/141534 target=_blank>tt6-mzn</a>のアドバイスによってわかりました。末尾に=があることからBase64でエンコードされたものと考えました。<a href=https://tool-taro.com/base64_decode/ target=_blank>Base64デコード</a>サイトでデコードするとバイナリが出てきます。<a href=https://rakko.tools/tools/75/ target=_blank>バイナリをテキストに変換するサイト</a>それにバイナリからテキスト変換するとFlagが出てきます。</p>
+<h2 id=internet>Internet</h2>
+<h3 id=hidden-code>Hidden Code</h3>
+<p>この問題はかの有名のコナミコマンドをすると答えが出てきます</p>
+<h3 id=robotopia>robotopia</h3>
+<p>この問題は検索エンジンのクローラーの気分になってとく問題です。たいていのサイトにはrobots.txtがあります。よって問題のサイトのURLに/robots.txtを追加して答えが現れます。</p>
+<h3 id=discord>Discord</h3>
+<p>この問題のFlagはDiscordの今回のCTFのチャンネル内にありました。</p>
+<h3 id=login1>login1</h3>
+<p>この問題はパスワード自体がFlagという問題です。Ctrl+Shift+Iで開発者ツールを開き要素を確認するとjavascriptでパスワードと比較している部分があります。よってif文の条件がFlagです。</p>
+<h3 id=browsercheck>Browsercheck</h3>
+<p>この問題はクローラーのユーザーエージェントと比べているようです。よって開発者ツールでユーザーエージェントを偽装すると正解です。</p>
+<h3 id=flat-earth>Flat earth</h3>
+<p>この問題はまず問題の管理者がログインするところを探すところから始まります。てきとうにマウスを動かすか開発者ツールの要素からログインする画面に移ります。
+そして管理者ログインをします。この問題は<a href=https://www.ipa.go.jp/security/vuln/websecurity.html target=_blank>SQLインジェクション</a>を用いる問題です。ユーザー名に</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#e6db74>&#39; OR 1=1--
 </span></code></pre></div><p>と入力するとFlagが現れます。
-このことについては<a href=https://www.ipa.go.jp/security/awareness/vendor/programmingv2/contents/502.html target=_blank>ipaが解説しているサイト</a>にあります。</p><h2 id=steganography>Steganography</h2><h3 id=doc-ception>Doc-ception</h3><p>この問題は<a href=https://ctftime.org/team/141534 target=_blank>tt6-mzn</a>の助言によって解けました。
-問題ファイルにはdocxの中にdocxが入れ子のようになっているという問題です。7-zipなどで解凍するとflag.txtが見つかるので答えがわかります。</p><h3 id=scan-me>Scan me</h3><p>この問題はQRコードやバーコードを解いていく問題です。
+このことについては<a href=https://www.ipa.go.jp/security/awareness/vendor/programmingv2/contents/502.html target=_blank>ipaが解説しているサイト</a>にあります。</p>
+<h2 id=steganography>Steganography</h2>
+<h3 id=doc-ception>Doc-ception</h3>
+<p>この問題は<a href=https://ctftime.org/team/141534 target=_blank>tt6-mzn</a>の助言によって解けました。
+問題ファイルにはdocxの中にdocxが入れ子のようになっているという問題です。7-zipなどで解凍するとflag.txtが見つかるので答えがわかります。</p>
+<h3 id=scan-me>Scan me</h3>
+<p>この問題はQRコードやバーコードを解いていく問題です。
 まずはQRコードの中にQRコードが隠されているので開きます。QRコードは右下以外3辺に四角があります。
-そのあとはただバーコードの内容を送るだけです。アプリによっては対応バーコードが少ないものもあるので適切に切り替えてください。</p><h3 id=rufus-the-vampire-cat>Rufus the vampire cat</h3><p>この問題は写真の中に<a href=http://steghide.sourceforge.net/ target=_blank>steghide</a>されたテキストを探す問題です。steghideには多くのデコーダーがありますが、今回は<a href=https://futureboy.us/stegano/decinput.html target=_blank>Steganographic_Decoder</a>を用いてデコードしました。問題の画像ファイルを選択し<strong>text/plain</strong>と入力し、デコードするとFlagが得られました。</p><h1 id=おわりに>おわりに</h1><p>以上が私が解いた問題です。初めて知ったことが多くて勉強になりました。またチーム内でアドバイスができたのはよかったです。</p></div></article></div><aside class="col-12 col-md-3 float-left sidebar"><div class="sidebar-item sidebar-pages"><h3>ページ</h3><ul><li><a href=https://312k.github.io/nekonyaa.github.io/>Home</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/about>About</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/privacypolicy>PrivacyPolicy</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/result>Result</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/index.xml>RSS</a></li></ul></div><div class="sidebar-item sidebar-links"><h3>リンク</h3><ul><li><a href=https://ctftime.org/team/141534 target=_blank><span>CTFTIME</span></a></li><li><a href=https://github.com/312k/nekonyaa.github.io target=_blank><span>GitHub</span></a></li></ul></div><div class="sidebar-item sidebar-tags"><h3>タグ</h3><div><span><a href=https://312k.github.io/nekonyaa.github.io/tags/312k/>312k</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/about/>about</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/crypto/>crypto</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/ctf/>CTF</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/mingw/>Mingw</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/sr/>sR</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/tt6mzn/>tt6mzn</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/visual-studio-code/>Visual Studio Code</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/writeup/>Writeup</a></span></div></div><div class="sidebar-item sidebar-toc"><h3>目次</h3><nav id=TableOfContents><ul><li><a href=#osint>OSINT</a><ul><li><a href=#a-quick-search>A quick search</a></li></ul></li><li><a href=#reverse-engineering--cracking>Reverse engineering / cracking</a><ul><li><a href=#cookieee>Cookieee!</a></li><li><a href=#no-peeking>no peeking!</a></li></ul></li><li><a href=#old-tech>Old tech</a><ul><li><a href=#goodbye-old-friend>Goodbye old friend</a></li></ul></li><li><a href=#cryptography>Cryptography</a><ul><li><a href=#flawed>flawed</a></li><li><a href=#shit実際の問題タイトルとは異なります>shit(実際の問題タイトルとは異なります)</a></li></ul></li><li><a href=#internet>Internet</a><ul><li><a href=#hidden-code>Hidden Code</a></li><li><a href=#robotopia>robotopia</a></li><li><a href=#discord>Discord</a></li><li><a href=#login1>login1</a></li><li><a href=#browsercheck>Browsercheck</a></li><li><a href=#flat-earth>Flat earth</a></li></ul></li><li><a href=#steganography>Steganography</a><ul><li><a href=#doc-ception>Doc-ception</a></li><li><a href=#scan-me>Scan me</a></li><li><a href=#rufus-the-vampire-cat>Rufus the vampire cat</a></li></ul></li></ul></nav></div></aside></div><div class=btn><div class=btn-menu id=btn-menu><i class="iconfont icon-grid-sharp"></i></div><div class=btn-toggle-mode><i class="iconfont icon-contrast-sharp"></i></div><div class=btn-scroll-top><i class="iconfont icon-chevron-up-circle-sharp"></i></div></div><aside class=sidebar-mobile style=display:none><div class=sidebar-wrapper><div class="sidebar-item sidebar-pages"><h3>ページ</h3><ul><li><a href=https://312k.github.io/nekonyaa.github.io/>Home</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/about>About</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/privacypolicy>PrivacyPolicy</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/result>Result</a></li><li><a href=https://312k.github.io/nekonyaa.github.io/index.xml>RSS</a></li></ul></div><div class="sidebar-item sidebar-links"><h3>リンク</h3><ul><li><a href=https://ctftime.org/team/141534 target=_blank><span>CTFTIME</span></a></li><li><a href=https://github.com/312k/nekonyaa.github.io target=_blank><span>GitHub</span></a></li></ul></div><div class="sidebar-item sidebar-tags"><h3>タグ</h3><div><span><a href=https://312k.github.io/nekonyaa.github.io/tags/312k/>312k</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/about/>about</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/crypto/>crypto</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/ctf/>CTF</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/mingw/>Mingw</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/sr/>sR</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/tt6mzn/>tt6mzn</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/visual-studio-code/>Visual Studio Code</a></span>
-<span><a href=https://312k.github.io/nekonyaa.github.io/tags/writeup/>Writeup</a></span></div></div></div></aside></main><footer><div class="container-lg clearfix"><div class="col-12 footer"><span>&copy; 2021
-<a href=https://312k.github.io/nekonyaa.github.io/>nekonyaa</a>
-| <a href=https://github.com/312k/nekonyaa.github.io>Source code</a>
-| Powered by <a href=https://github.com/dsrkafuu/hugo-theme-fuji/ target=_blank>Fuji-v2</a> & <a href=https://gohugo.io/ target=_blank>Hugo</a></span></div></div></footer><script defer src=https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.0/lazysizes.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js></script><script defer src=https://312k.github.io/nekonyaa.github.io/assets/js/fuji.min.js></script></body></html>
+そのあとはただバーコードの内容を送るだけです。アプリによっては対応バーコードが少ないものもあるので適切に切り替えてください。</p>
+<h3 id=rufus-the-vampire-cat>Rufus the vampire cat</h3>
+<p>この問題は写真の中に<a href=http://steghide.sourceforge.net/ target=_blank>steghide</a>されたテキストを探す問題です。steghideには多くのデコーダーがありますが、今回は<a href=https://futureboy.us/stegano/decinput.html target=_blank>Steganographic_Decoder</a>を用いてデコードしました。問題の画像ファイルを選択し<strong>text/plain</strong>と入力し、デコードするとFlagが得られました。</p>
+<h1 id=おわりに>おわりに</h1>
+<p>以上が私が解いた問題です。初めて知ったことが多くて勉強になりました。またチーム内でアドバイスができたのはよかったです。</p>
+</div>
+</article>
+</div>
+<aside class="col-12 col-md-3 float-left sidebar">
+<div class="sidebar-item sidebar-pages">
+<h3>ページ</h3>
+<ul>
+<li>
+<a href=https://nekonyaa-chan.github.io/>Home</a>
+</li>
+<li>
+<a href=https://nekonyaa-chan.github.io/about>About</a>
+</li>
+<li>
+<a href=https://nekonyaa-chan.github.io/privacypolicy>PrivacyPolicy</a>
+</li>
+<li>
+<a href=https://nekonyaa-chan.github.io/result>Result</a>
+</li>
+<li>
+<a href=https://nekonyaa-chan.github.io/index.xml>RSS</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-links">
+<h3>リンク</h3>
+<ul>
+<li>
+<a href=https://ctftime.org/team/141534 target=_blank><span>CTFTIME</span></a>
+</li>
+<li>
+<a href=https://nekonyaa-chan.github.io target=_blank><span>GitHub</span></a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-tags">
+<h3>タグ</h3>
+<div>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/312k/>312k</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/about/>about</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/crypto/>crypto</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/ctf/>CTF</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/mingw/>Mingw</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/sr/>sR</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/tt6mzn/>tt6mzn</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/visual-studio-code/>Visual Studio Code</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/writeup/>Writeup</a>
+</span>
+</div>
+</div>
+<div class="sidebar-item sidebar-toc">
+<h3>目次</h3><nav id=TableOfContents>
+<ul>
+<li><a href=#osint>OSINT</a>
+<ul>
+<li><a href=#a-quick-search>A quick search</a></li>
+</ul>
+</li>
+<li><a href=#reverse-engineering--cracking>Reverse engineering / cracking</a>
+<ul>
+<li><a href=#cookieee>Cookieee!</a></li>
+<li><a href=#no-peeking>no peeking!</a></li>
+</ul>
+</li>
+<li><a href=#old-tech>Old tech</a>
+<ul>
+<li><a href=#goodbye-old-friend>Goodbye old friend</a></li>
+</ul>
+</li>
+<li><a href=#cryptography>Cryptography</a>
+<ul>
+<li><a href=#flawed>flawed</a></li>
+<li><a href=#shit実際の問題タイトルとは異なります>shit(実際の問題タイトルとは異なります)</a></li>
+</ul>
+</li>
+<li><a href=#internet>Internet</a>
+<ul>
+<li><a href=#hidden-code>Hidden Code</a></li>
+<li><a href=#robotopia>robotopia</a></li>
+<li><a href=#discord>Discord</a></li>
+<li><a href=#login1>login1</a></li>
+<li><a href=#browsercheck>Browsercheck</a></li>
+<li><a href=#flat-earth>Flat earth</a></li>
+</ul>
+</li>
+<li><a href=#steganography>Steganography</a>
+<ul>
+<li><a href=#doc-ception>Doc-ception</a></li>
+<li><a href=#scan-me>Scan me</a></li>
+<li><a href=#rufus-the-vampire-cat>Rufus the vampire cat</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</aside>
+</div>
+<div class=btn>
+<div class=btn-menu id=btn-menu>
+<i class="iconfont icon-grid-sharp"></i>
+</div>
+<div class=btn-toggle-mode>
+<i class="iconfont icon-contrast-sharp"></i>
+</div>
+<div class=btn-scroll-top>
+<i class="iconfont icon-chevron-up-circle-sharp"></i>
+</div>
+</div>
+<aside class=sidebar-mobile style=display:none>
+<div class=sidebar-wrapper>
+<div class="sidebar-item sidebar-pages">
+<h3>ページ</h3>
+<ul>
+<li>
+<a href=https://nekonyaa-chan.github.io/>Home</a>
+</li>
+<li>
+<a href=https://nekonyaa-chan.github.io/about>About</a>
+</li>
+<li>
+<a href=https://nekonyaa-chan.github.io/privacypolicy>PrivacyPolicy</a>
+</li>
+<li>
+<a href=https://nekonyaa-chan.github.io/result>Result</a>
+</li>
+<li>
+<a href=https://nekonyaa-chan.github.io/index.xml>RSS</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-links">
+<h3>リンク</h3>
+<ul>
+<li>
+<a href=https://ctftime.org/team/141534 target=_blank><span>CTFTIME</span></a>
+</li>
+<li>
+<a href=https://nekonyaa-chan.github.io target=_blank><span>GitHub</span></a>
+</li>
+</ul>
+</div>
+<div class="sidebar-item sidebar-tags">
+<h3>タグ</h3>
+<div>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/312k/>312k</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/about/>about</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/crypto/>crypto</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/ctf/>CTF</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/mingw/>Mingw</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/sr/>sR</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/tt6mzn/>tt6mzn</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/visual-studio-code/>Visual Studio Code</a>
+</span>
+<span>
+<a href=https://nekonyaa-chan.github.io/tags/writeup/>Writeup</a>
+</span>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<footer>
+<div class="container-lg clearfix">
+<div class="col-12 footer">
+<span>&copy; 2022
+<a href=https://nekonyaa-chan.github.io/>nekonyaa</a>
+| <a href=https://nekonyaa-chan.github.io>Source code</a>
+| Powered by <a href=https://github.com/dsrkafuu/hugo-theme-fuji/ target=_blank>Fuji-v2</a> & <a href=https://gohugo.io/ target=_blank>Hugo</a>
+</span>
+</div>
+</div>
+</footer>
+<script defer src=https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.0/lazysizes.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js></script>
+<script defer src=https://nekonyaa-chan.github.io/assets/js/fuji.min.js></script>
+</body>
+</html>
