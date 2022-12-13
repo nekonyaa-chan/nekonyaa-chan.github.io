@@ -59,7 +59,7 @@ summaryLength = 100
     missingBackButtonLabel = "ホームページへ戻る"
 
       logoText = "nekonyaa"
-      logoHomeLink = "https://nekonyaa-chan.github.io"
+      logoHomeLink = "https://nekonyaa-chan.github.io/"
 [menu]
   [[menu.nav]]
       name = "Home"
