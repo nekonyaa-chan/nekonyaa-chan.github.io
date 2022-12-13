@@ -1,4 +1,4 @@
-baseurl = "https://312k.github.io/nekonyaa.github.io/"
+baseurl = "https://nekonyaa-chan.github.io/"
 languageCode = "ja-jp"
 theme = "fuji"
 paginate = 5
@@ -11,7 +11,7 @@ summaryLength = 100
 [params]
     author = "nekonyaa"
       subTitle = "CTFのWrite up"
-          sourceURL = "https://github.com/312k/nekonyaa.github.io"
+          sourceURL = "https://nekonyaa-chan.github.io"
   # dir name of your main content (default is `content/posts`).
   # the list of set content will show up on your index page (baseurl).
   contentTypeName = "post"
@@ -59,7 +59,7 @@ summaryLength = 100
     missingBackButtonLabel = "ホームページへ戻る"
 
       logoText = "nekonyaa"
-      logoHomeLink = "https://312k.github.io/nekonyaa.github.io/"
+      logoHomeLink = "https://nekonyaa-chan.github.io"
 [menu]
   [[menu.nav]]
       name = "Home"
@@ -92,4 +92,4 @@ summaryLength = 100
       	url= "/index.xml"
   [[menu.link]]
       name = "GitHub"
-          url = "https://github.com/312k/nekonyaa.github.io"
+          url = "https://nekonyaa-chan.github.io"
